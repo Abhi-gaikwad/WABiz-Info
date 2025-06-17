@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import WarningBanner from './components/WarningBanner';
 import Navbar from './components/Navbar'; // Assuming you have a Navbar component
 import DealCard from './components/DealCard';
+import WabizFeatures from './components/WabizFeatures'; // Assuming you have a WabizFeatures component
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
     </div>
 
     <WarningBanner />
+    <WabizFeatures />
     <DealCard />
 
     <div id='pricing'>
