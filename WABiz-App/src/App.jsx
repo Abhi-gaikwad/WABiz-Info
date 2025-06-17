@@ -4,7 +4,7 @@ import WarningBanner from "./components/WarningBanner"
 import Pricing from "./components/Pricing"
 import Footer from "./components/Footer"
 import './App.css'
-import WabizFeatures from "./WabizFeatures" // Keep this import for the features section
+import WabizFeatures from "./components/WabizFeatures" // Keep this import for the features section
 
 function App() {
   return (

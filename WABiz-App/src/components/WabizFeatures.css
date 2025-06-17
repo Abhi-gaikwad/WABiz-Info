@@ -224,7 +224,7 @@ body {
   color: var(--text-muted);
 }
 
-/* --- Keyframe Animations --- */
+/* --- Keyframe  --- */
 @keyframes fadeInSlideUp {
   from {
     opacity: 0;

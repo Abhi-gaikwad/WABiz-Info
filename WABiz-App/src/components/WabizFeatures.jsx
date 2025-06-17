@@ -64,7 +64,7 @@ const WabizFeatures = () => {
                 key={index}
                 className="feature-card group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
               >
-                {/* Gradient Background Effect */}
+                {/* Gradient  Effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 
                 {/* Content */}
