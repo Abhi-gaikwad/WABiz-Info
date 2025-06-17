@@ -185,6 +185,7 @@ html, body {
   border-radius: 1rem;
   box-shadow: 0 10px 25px rgba(0,0,0,0.25);
   text-align: center; /* Center content */
+  margin-bottom: 2.5rem; /* Add gap below the CTA box */
 }
 
 .cta-box h3 {
@@ -226,6 +227,7 @@ html, body {
   backdrop-filter: blur(4px); /* Blur effect */
   border-radius: 1rem;
   padding: 2.5rem;
+  margin-top: 2.5rem; /* Add gap below the CTA box */
   border: 1px solid rgba(107,114,128,0.3); /* Subtle border */
   box-shadow: 0 10px 25px rgba(0,0,0,0.25); /* Shadow for depth */
 }
@@ -375,3 +377,10 @@ html, body {
   padding: 5px;
 }
 
+.hero-left > * {
+  margin-bottom: 2.5rem; /* Adjust spacing between stacked sections */
+}
+
+.hero-left > *:last-child {
+  margin-bottom: 0; /* Avoid extra space at the end */
+}

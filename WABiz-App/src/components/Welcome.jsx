@@ -61,7 +61,16 @@ const HeroSection = () => (
             Transform your business with the most powerful WhatsApp automation platform.
             Join thousands of successful marketers already using WABiz. {/* Changed to WABiz */}
           </p>
-          <button className="cta-button">DISCOVER WABIZ NOW!</button> {/* Changed to WABiz */}
+          <button
+            className="cta-button"
+            onClick={() => {
+                const pricingSection = document.getElementById('pricing');
+                if (pricingSection) pricingSection.scrollIntoView({ behavior: 'smooth' });
+            }}
+            >
+            DISCOVER WABIZ NOW!
+           </button>
+
         </div>
       </div>
 
