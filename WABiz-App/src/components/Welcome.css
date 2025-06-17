@@ -1,0 +1,377 @@
+/* Universal Box-Sizing for consistent layout */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* HTML and Body Reset for full viewport coverage and to remove default margins/paddings */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw; /* Ensures full viewport width */
+  overflow-x: hidden; /* Prevent horizontal scrollbar from accidental overflows */
+  font-family: 'Poppins', sans-serif; /* Using Poppins for modern look */
+  color: #fff; /* Default text color */
+}
+
+/* Layout Background */
+.welcome-page {
+  min-height: 100vh;
+  width: 100%; /* Changed from 100vw to 100% to fill parent, but given parent is body (100vw), effectively same but good practice */
+  background: linear-gradient(to bottom right, #1f2937, #111827, #000); /* Dark gradient background */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(17, 24, 39, 0.5); /* Semi-transparent dark background */
+  backdrop-filter: blur(4px); /* Blur effect */
+  width: 100%; /* Ensure header spans full width */
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-circle {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(to right, #34d399, #059669); /* Green gradient for circle */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem; /* Icon size in circle */
+}
+
+.logo-text {
+  font-size: 1.75rem;
+  font-weight: bold;
+  background: linear-gradient(to right, #34d399, #059669); /* Green gradient for text */
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Hero Section Container */
+.hero-container {
+  max-width: 1000px; /* Adjusted max-width based on new snapshot */
+  margin: 0 auto; /* Centering the container */
+  padding: 2.5rem 1.5rem; /* Padding for the container (1.5rem for left/right) */
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem; /* Spacing between main sections */
+  width: calc(100% - 3rem); /* Adjusts width to account for 1.5rem padding on each side */
+  /* This ensures the content itself doesn't exceed 100% viewport width minus its own padding */
+  /* On very small screens, this will prevent horizontal scroll if padding pushes content out */
+}
+
+/* Hero Top Content */
+.hero-top {
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 2.8rem; /* Adjusted font size for title */
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.hero-title .highlight {
+  background: linear-gradient(to right, #34d399, #059669); /* Green gradient highlight */
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.hero-subtitle {
+  font-size: 1.15rem; /* Adjusted font size for subtitle */
+  color: #d1d5db; /* Light gray text */
+  line-height: 1.75;
+  margin-bottom: 2.5rem;
+}
+
+.hero-subtitle .highlight {
+  color: #34d399; /* Green highlight for strong text in subtitle */
+}
+
+/* Hero Stats Box */
+.hero-stats-box {
+  background: linear-gradient(to right, rgba(31,41,55,0.8), rgba(55,65,81,0.8)); /* Dark gradient background */
+  border: 1px solid rgba(107, 114, 128, 0.5); /* Subtle border */
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25); /* Shadow for depth */
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns */
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.stat-title {
+  color: #34d399; /* Green for titles */
+  font-weight: bold;
+  font-size: 1.125rem;
+}
+
+.stat-text {
+  font-size: 0.875rem;
+  color: #d1d5db; /* Light gray for text */
+}
+
+.hero-stats-footer {
+  border-top: 1px solid rgba(107, 114, 128, 0.5); /* Separator line */
+  padding-top: 1.5rem;
+  margin-top: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+  color: #a0aec0; /* Slightly darker gray */
+}
+
+/* Instant Reach Box */
+.instant-reach-box {
+  background: linear-gradient(to bottom right, rgba(31,41,55,0.5), rgba(17,24,39,0.5)); /* Dark gradient background */
+  backdrop-filter: blur(4px); /* Blur effect */
+  border-radius: 1rem;
+  padding: 2.5rem;
+  text-align: center;
+  border: 1px solid rgba(107,114,128,0.3); /* Subtle border */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3); /* Shadow for depth */
+}
+
+.icon-circle {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem; /* Center circle */
+  background: linear-gradient(to right, #34d399, #059669); /* Green gradient */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem; /* Icon size in circle */
+  animation: pulse 2s infinite; /* Pulse animation */
+}
+
+.instant-text {
+  font-size: 1.125rem;
+  color: #d1d5db;
+}
+
+.instant-highlight {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #34d399; /* Green highlight */
+  display: block; /* Ensures it's on its own line */
+}
+
+.instant-subtext {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: #9ca3af; /* Darker gray */
+}
+
+/* CTA Box */
+.cta-box {
+  background: linear-gradient(to right, #ea580c, #c24100); /* Orange gradient background */
+  color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  text-align: center; /* Center content */
+}
+
+.cta-box h3 {
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.cta-box p {
+  font-size: 1.125rem;
+  color: #ffeccc; /* Lighter orange text */
+  line-height: 1.5;
+}
+
+.cta-button {
+  margin-top: 1.5rem; /* Increased margin for spacing */
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  font-weight: bold;
+  background: linear-gradient(to right, #22c55e, #16a34a); /* Green gradient button */
+  border-radius: 0.75rem;
+  font-size: 1.125rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+  cursor: pointer;
+  color: white; /* Ensure text is white */
+  border: none; /* Remove default button border */
+}
+
+.cta-button:hover {
+  background: linear-gradient(to right, #16a34a, #15803d);
+  transform: scale(1.02); /* Slight scale on hover */
+}
+
+/* Features Box */
+.features-box {
+  background: linear-gradient(to bottom right, rgba(31,41,55,0.4), rgba(17,24,39,0.4)); /* Dark gradient background */
+  backdrop-filter: blur(4px); /* Blur effect */
+  border-radius: 1rem;
+  padding: 2.5rem;
+  border: 1px solid rgba(107,114,128,0.3); /* Subtle border */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25); /* Shadow for depth */
+}
+
+.features-box h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.feature-item {
+  display: flex;
+  gap: 1rem;
+  background-color: rgba(31, 41, 55, 0.3); /* Slightly lighter background for items */
+  padding: 1rem;
+  border-radius: 0.75rem;
+  align-items: flex-start; /* Align icon and text at the top */
+}
+
+.feature-icon {
+  color: #22c55e; /* Green for icons */
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.feature-title {
+  font-weight: bold;
+  font-size: 1.125rem;
+  color: white;
+  margin-bottom: 0.25rem; /* Spacing between title and description */
+}
+
+.feature-desc {
+  font-size: 0.875rem;
+  color: #9ca3af; /* Darker gray for description */
+  margin: 0; /* Remove default paragraph margin */
+}
+
+.feature-footer {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(34,197,94,0.2); /* Light green transparent background */
+  border-radius: 0.75rem;
+  border: 1px solid rgba(34,197,94,0.3); /* Green border */
+  text-align: center;
+  color: #d1d5db;
+  font-size: 0.875rem;
+}
+
+.feature-footer span:first-child {
+  font-weight: bold;
+  font-size: 1.125rem;
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #22c55e; /* Green for highlight */
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+/* Responsive Adjustments */
+@media (min-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 2fr 1.5fr; /* Adjusted grid for left/right content for larger screens */
+    gap: 3rem; /* Spacing between columns */
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  .instant-highlight {
+    font-size: 1.25rem;
+  }
+  .cta-box h3 {
+    font-size: 1.3rem;
+  }
+  .cta-button {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+  .features-box {
+    padding: 2rem;
+  }
+  .features-box h3 {
+    font-size: 1.3rem;
+  }
+  .feature-item {
+    padding: 0.8rem;
+  }
+  .feature-title {
+    font-size: 1rem;
+  }
+  .feature-desc {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-container {
+    padding: 1.5rem 1rem;
+    width: calc(100% - 2rem); /* Adjusted for 1rem padding on each side */
+  }
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+  .hero-stats-box, .instant-reach-box, .cta-box, .features-box {
+    padding: 1.5rem;
+  }
+  .stats-grid {
+    grid-template-columns: 1fr; /* Stack stats on very small screens */
+  }
+}
+
+.logo-circle {
+  width: 60px;
+  height: 60px;
+  background: none;        /* ✅ Remove green gradient */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 5px;
+}
+
