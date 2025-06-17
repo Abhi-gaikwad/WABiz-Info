@@ -73,3 +73,24 @@
   background: linear-gradient(to right, #16a34a, #15803d);
   transform: scale(1.05);
 }
+
+.scroll-top {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: #34d399;
+  color: white;
+  font-size: 1.1rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px; /* 🔁 was 999px — changed to normal rectangle */
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, background 0.3s ease;
+  z-index: 1000;
+}
+
+.scroll-top:hover {
+  transform: scale(1.05);
+  background: #059669;
+}

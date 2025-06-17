@@ -1,84 +1,124 @@
 /* Make space for fixed navbar */
 body {
-  padding-top: 70px;
+  padding-top: 80px; /* Default for larger screens */
   margin: 0;
-  font-family: "Segoe UI", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
-/* Main Sticky Navbar */
+/* Sticky Navbar */
 .simple-navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(135deg, #ef4444, #dc2626, #b91c1c);
+  background: linear-gradient(to right, #dc2626, #b91c1c);
   color: white;
   z-index: 9999;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: background 0.3s ease-in-out;
 }
 
-/* Container */
+/* Navbar Container */
 .simple-navbar-container {
-  max-width: 1300px;
+  max-width: 1280px;
   margin: auto;
-  padding: 16px 24px;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Left: Logo and Text */
+.header-logo {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 0.75rem;
 }
 
-/* Left Side */
-.navbar-left {
+.logo-circle {
+  width: 45px;
+  height: 45px;
+  background: none;
+  border-radius: 50%;
+  overflow: hidden;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.navbar-title {
-  margin: 0;
-  font-size: 20px;
-  font-weight: 800;
+.logo-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
-.navbar-info {
-  margin: 0;
-  font-size: 13px;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.85);
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(to right, #34d399, #059669);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
-/* Right Side - Button */
+/* Message under logo */
+.navbar-message {
+  font-size: 0.85rem;
+  color: #fcd34d;
+  margin: 0.2rem 0 0 0;
+  font-weight: 500;
+}
+
+/* Right: Button */
 .navbar-button {
-  background: linear-gradient(135deg, #22c55e, #16a34a);
+  background: linear-gradient(to right, #22c55e, #16a34a);
   border: none;
+  padding: 0.7rem 1.4rem;
+  font-size: 1rem;
+  border-radius: 8px;
   color: white;
-  padding: 12px 24px;
-  border-radius: 30px;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
   transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
 }
 
 .navbar-button:hover {
+  background: linear-gradient(to right, #16a34a, #15803d);
   transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(34, 197, 94, 0.6);
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .simple-navbar-container {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+/* Responsive Design */
+@media (max-width: 768px) {
+  /* Adjust body padding for mobile, based on actual navbar height */
+  body {
+    padding-top: 130px; /* Adjust this value based on your inspection of the navbar's height on mobile */
   }
 
-  .navbar-left {
+  .simple-navbar-container {
+    flex-direction: column;
+    gap: 0.75rem;
     align-items: flex-start;
+    padding: 1rem; /* Slightly reduced horizontal padding for very small screens */
   }
 
   .navbar-button {
     width: 100%;
     text-align: center;
+  }
+
+  .logo-text {
+    font-size: 1.3rem; /* Slightly smaller logo text on small screens */
+  }
+
+  .navbar-message {
+    font-size: 0.75rem; /* Slightly smaller message text */
+  }
+}
+
+/* Optional: For even smaller screens like old iPhones (adjust as needed) */
+@media (max-width: 480px) {
+  .logo-circle {
+    width: 38px;
+    height: 38px;
   }
 }

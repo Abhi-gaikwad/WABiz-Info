@@ -1,24 +1,42 @@
-// src/Components/SimpleStickyNavbar.jsx
-import React from "react"
-import "./Navbar.css"
+import React from "react";
+import logo from '../assets/logoWabiz.png';
+import "./Navbar.css";
 
 const Navbar = () => {
   return (
     <nav className="simple-navbar">
       <div className="simple-navbar-container">
-        {/* Left Side - Name/Info */}
-        <div className="navbar-left">
-          <h1 className="navbar-title">FlaxxaWapi</h1>
-          <p className="navbar-info">Best Deal – Limited Time Only</p>
+        
+        {/* Left - WABiz Logo */}
+        <div className="header-logo">
+          <div className="logo-circle">
+            <img src={logo} alt="Logo" className="logo-image" />
+          </div>
+          <div>
+            <span className="logo-text">WABiz</span>
+            <p className="navbar-message">
+              Never Miss a <u><strong>Lead Again!</strong></u>
+            </p>
+          </div>
         </div>
 
-        {/* Right Side - CTA */}
+
+        {/* Right - Buy Now Button */}
         <div className="navbar-right">
-          <button className="navbar-button">Buy Now for $19</button>
+          <button
+            className="navbar-button"
+            onClick={() => {
+              const section = document.getElementById('pricing');
+              if (section) section.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            Buy Now for $8/mo
+          </button>
         </div>
+
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

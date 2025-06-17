@@ -42,6 +42,14 @@ function Pricing() {
           </div>
         ))}
       </div>
+
+      <div className="scroll-top" onClick={() => {
+        const section = document.getElementById('welcome');
+        if (section) section.scrollIntoView({ behavior: 'smooth' });
+      }}>
+        ⬆️
+      </div>
+
     </div>
   );
 }
