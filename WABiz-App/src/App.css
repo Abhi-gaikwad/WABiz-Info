@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+/* #root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+=======
 /* Remove unnecessary constraints on root */
 #root {
   width: 100vw;
@@ -5,6 +12,7 @@
   margin: 0;
   padding: 0;
   text-align: left; /* Optional: avoid center-alignment if not needed */
+>>>>>>> 6d835be317551f445a9d3e4ff65a8da298c21f89
 }
 
 
@@ -42,4 +50,4 @@
 
 .read-the-docs {
   color: #888;
-}
+} */
