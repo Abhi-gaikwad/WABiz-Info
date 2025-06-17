@@ -1,0 +1,51 @@
+.footer-section {
+  background: linear-gradient(to bottom right, #1f2937, #111827, #000);
+  color: #d1d5db;
+  padding: 3rem 1.5rem 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-cta-box {
+  background: linear-gradient(to bottom right, rgba(31,41,55,0.5), rgba(17,24,39,0.5));
+  border: 1px solid rgba(107,114,128,0.3);
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  text-align: center;
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.footer-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.footer-subtext {
+  font-size: 1rem;
+  color: #d1d5db;
+  margin-bottom: 1.25rem;
+}
+
+.footer-action {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #34d399;
+}
+
+.highlight {
+  color: #34d399;
+}
+
+.highlight-bold {
+  color: #22c55e;
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #9ca3af;
+  line-height: 1.6;
+}
