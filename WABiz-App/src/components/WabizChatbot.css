@@ -1,0 +1,427 @@
+/* WabizChatbot.css */
+
+/* Base positioning for the chatbot container */
+.chatbot-container {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 9999;
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+}
+
+/* Chat Button */
+.chat-button {
+  background-image: linear-gradient(to right, #22c55e, #16a34a);
+  color: #fff;
+  border-radius: 50%; /* Perfect circle */
+  padding: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 0 0 rgba(34, 197, 94, 0.7); /* Refined shadow */
+  border: none; /* No border for a cleaner look */
+  transform: scale(1);
+  transition: all 0.3s ease-in-out; /* Smoother transition */
+  animation: pulse-animation 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  
+  /* Explicit positioning for clarity, though inherited from container */
+  position: fixed; /* Keep fixed to viewport */
+  bottom: 24px;
+  left: 24px;
+  z-index: 9999;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.chat-button:hover {
+  background-image: linear-gradient(to right, #16a34a, #15803d);
+  transform: scale(1.1); /* Slightly larger hover effect */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
+  animation: none; /* Stop pulsing on hover */
+}
+
+@keyframes pulse-animation {
+  0%, 100% {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 0 0 rgba(34, 197, 94, 0.7);
+  }
+  50% {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 0 10px rgba(34, 197, 94, 0);
+  }
+}
+
+/* Chat Window */
+.chat-window {
+  background-color: #fff;
+  border-radius: 12px; /* Slightly more rounded corners */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Refined shadow */
+  border: 1px solid #e0e0e0; /* Lighter border */
+  transition: all 0.3s ease-in-out;
+  position: fixed;
+  bottom: 90px;
+  left: 24px;
+  z-index: 9999;
+  max-width: calc(100vw - 48px); /* Ensures it fits on smaller screens */
+  overflow: hidden; /* Ensures content stays within rounded corners */
+  display: flex;
+  flex-direction: column; /* Stack header, messages, input vertically */
+}
+
+.chat-window.minimized {
+  width: 320px;
+  height: 64px;
+}
+
+.chat-window.full-size {
+  width: 380px; /* Adjusted width for a slightly less wide appearance */
+  height: 500px; /* Increased height for more message visibility */
+  max-height: 85vh; /* Max height relative to viewport */
+}
+
+/* Header */
+.chat-header {
+  background-image: linear-gradient(to right, #22c55e, #16a34a);
+  color: #fff;
+  padding: 12px 16px; /* Adjusted padding */
+  border-top-left-radius: 11px; /* Match parent border-radius */
+  border-top-right-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0; /* Prevent header from shrinking */
+}
+
+.chat-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Increased gap for better spacing */
+}
+
+.chat-header-right {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Gap between buttons */
+}
+
+.header-button {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.2); /* Slightly visible background */
+  padding: 6px; /* More padding for easier click */
+  border-radius: 50%; /* Circular buttons */
+  transition: background-color 0.2s ease-in-out;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-button:hover {
+  background-color: rgba(255, 255, 255, 0.3); /* More pronounced hover */
+}
+
+.header-title {
+  font-weight: 600;
+  font-size: 1rem; /* Slightly smaller for compactness */
+}
+
+.header-status {
+  font-size: 0.7rem; /* Adjusted font size */
+  opacity: 0.8;
+}
+
+/* Messages Area */
+.messages-area {
+  flex-grow: 1; /* Allows messages area to take available space */
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scroll-behavior: smooth; /* Smooth scrolling */
+  -webkit-overflow-scrolling: touch; /* Improves scrolling on iOS */
+}
+
+/* Scrollbar styling for a neater look */
+.messages-area::-webkit-scrollbar {
+  width: 8px;
+}
+
+.messages-area::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.messages-area::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.messages-area::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+.message-row {
+  display: flex;
+}
+
+.message-row.user {
+  justify-content: flex-end;
+}
+
+.message-row.bot {
+  justify-content: flex-start;
+}
+
+.message-content-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  max-width: 85%; /* Slightly increased max-width for bubbles */
+}
+
+.bot-icon-wrapper, .user-icon-wrapper {
+  padding: 6px; /* Larger padding for icons */
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 2px; /* Align with message top */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bot-icon-wrapper {
+  background-color: #e6ffed; /* Lighter green */
+}
+
+.bot-icon {
+  color: #10b981; /* A bit darker green for icon */
+}
+
+.user-icon-wrapper {
+  background-color: #e0f2fe; /* Lighter blue */
+}
+
+.user-icon {
+  color: #3b82f6; /* Consistent blue for icon */
+}
+
+.message-bubble {
+  border-radius: 18px; /* More rounded bubbles */
+  padding: 10px 14px; /* Adjusted padding */
+  line-height: 1.4; /* Better line height */
+  word-wrap: break-word; /* Ensure long words break */
+  white-space: pre-wrap; /* Preserve whitespace and line breaks */
+}
+
+.message-bubble.user {
+  background-color: #3b82f6;
+  color: #fff;
+  margin-left: auto;
+  border-bottom-right-radius: 4px; /* Tail for user message */
+}
+
+.message-bubble.bot {
+  background-color: #f0f2f5; /* Lighter gray for bot */
+  color: #1f2937;
+  border-bottom-left-radius: 4px; /* Tail for bot message */
+}
+
+.message-text {
+  font-size: 0.9rem; /* Slightly larger text */
+  margin-bottom: 4px; /* Space before timestamp */
+}
+
+.message-timestamp {
+  font-size: 0.65rem; /* Smaller, subtle timestamp */
+  text-align: right; /* Align timestamp to the right */
+  margin-top: 2px; /* Less margin */
+}
+
+.message-timestamp.user {
+  color: rgba(255, 255, 255, 0.7); /* More transparent for user messages */
+}
+
+.message-timestamp.bot {
+  color: #9ca3af; /* Darker gray for bot messages */
+}
+
+.typing-indicator {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.typing-indicator .flex-space { /* New class for dot container */
+  display: flex;
+  gap: 4px; /* Space between dots */
+  align-items: center;
+}
+
+.typing-indicator .dot {
+  width: 7px; /* Slightly smaller dots */
+  height: 7px;
+  background-color: #9ca3af;
+  border-radius: 50%;
+  animation: bounce 1s infinite;
+}
+
+/* Quick Replies */
+.quick-replies-area {
+  padding: 8px 16px 12px; /* Adjusted padding */
+  flex-shrink: 0; /* Prevent quick replies from shrinking */
+}
+
+.quick-replies-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px; /* Consistent gap */
+}
+
+.quick-reply-button {
+  font-size: 0.75rem;
+  background-color: #e9f5ed; /* Very light green */
+  color: #10b981; /* Green text */
+  padding: 6px 12px; /* More padding */
+  border-radius: 20px; /* More pill-shaped */
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+  border: 1px solid #cce8d6; /* Light border */
+  cursor: pointer;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.quick-reply-button:hover {
+  background-color: #d4eadf; /* Darker hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Input Area */
+.input-area {
+  border-top: 1px solid #e0e0e0; /* Lighter border */
+  padding: 12px 16px; /* Adjusted padding */
+  background-color: #fff; /* Ensure white background */
+  flex-shrink: 0; /* Prevent input from shrinking */
+}
+
+.input-flex-wrapper {
+  display: flex;
+  gap: 10px; /* Increased gap */
+  align-items: center;
+}
+
+.message-input {
+  flex: 1;
+  border: 1px solid #d1d5db;
+  border-radius: 25px; /* More rounded input field */
+  padding: 10px 16px; /* Adjusted padding */
+  outline: none;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  font-size: 0.9rem;
+}
+
+.message-input:focus {
+  border-color: #22c55e;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2); /* Subtle focus glow */
+}
+
+.send-button {
+  background-color: #22c55e;
+  color: #fff;
+  border-radius: 50%; /* Circular send button */
+  padding: 12px; /* Larger click area */
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.send-button:hover {
+  background-color: #16a34a;
+  transform: scale(1.05); /* Slight scale on hover */
+}
+
+.send-button:disabled {
+  background-color: #e0e0e0; /* Lighter disabled background */
+  color: #a0a0a0; /* Grayer disabled text */
+  cursor: not-allowed;
+  transform: none; /* No scale on disabled */
+}
+
+/* Specific text formatting within messages */
+.message-text strong {
+  color: #2563eb;
+  font-weight: 600; /* Bolder for emphasis */
+}
+
+.message-text .ml-2 {
+  margin-left: 8px;
+  color: #4b5563; /* Consistent gray */
+}
+
+.message-text .font-medium {
+  font-weight: 500;
+  color: #1f2937;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 480px) {
+  .chatbot-container {
+    bottom: 15px; /* Slightly closer to bottom */
+    left: 15px; /* Slightly closer to left */
+  }
+
+  .chat-button {
+    width: 55px; /* Slightly smaller button */
+    height: 55px;
+    padding: 14px;
+  }
+
+  .chat-window.full-size {
+    width: calc(100vw - 30px); /* Full width minus margin on small screens */
+    height: calc(90vh - 30px); /* Use more vertical space */
+    bottom: 80px; /* Position above button */
+    left: 15px; /* Align with button */
+  }
+
+  .chat-header {
+    padding: 10px 14px;
+  }
+
+  .header-title {
+    font-size: 0.95rem;
+  }
+
+  .header-status {
+    font-size: 0.65rem;
+  }
+
+  .messages-area {
+    padding: 12px;
+  }
+
+  .message-bubble {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+
+  .quick-reply-button {
+    padding: 5px 10px;
+    font-size: 0.7rem;
+  }
+
+  .input-area {
+    padding: 10px 14px;
+  }
+
+  .message-input {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+
+  .send-button {
+    padding: 10px; /* Smaller send button */
+  }
+}

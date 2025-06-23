@@ -8,6 +8,7 @@ import Navbar from './components/Navbar';
 import DealCard from './components/DealCard';
 import WabizFeatures from './components/WabizFeatures';
 import ComparisonTable from './components/ComparisonTable';
+import WabizChatbot from './components/WabizChatbot'; // Add this import
 
 function App() {
   useEffect(() => {
@@ -47,6 +48,8 @@ function App() {
       </div>
 
       <Footer />
+
+      <WabizChatbot />
     </>
   );
 }
