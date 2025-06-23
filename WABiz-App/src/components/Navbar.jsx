@@ -1,42 +1,141 @@
-import React from "react";
-import logo from '../assets/logoWabiz.png';
-import "./Navbar.css";
+import React, { useState } from 'react';
+import { Sun, Moon, Menu, X } from 'lucide-react';
 
-const Navbar = () => {
+function Navbar({ darkMode, toggleDarkMode }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+      setIsMenuOpen(false);
+    }
+  };
+
   return (
-    <nav className="simple-navbar">
-      <div className="simple-navbar-container">
-        
-        {/* Left - WABiz Logo */}
-        <div className="header-logo">
-          <div className="logo-circle">
-            <img src={logo} alt="Logo" className="logo-image" />
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      darkMode 
+        ? 'bg-teal-900/95 backdrop-blur-md border-teal-800' 
+        : 'bg-teal-600/95 backdrop-blur-md border-teal-500'
+    } border-b`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <h1 className={`text-2xl font-bold ${
+              darkMode ? 'text-amber-300' : 'text-white'
+            }`}>
+              WABiz
+            </h1>
           </div>
-          <div>
-            <span className="logo-text">WABiz</span>
-            <p className="navbar-message">
-              Never Miss a <u><strong>Lead Again!</strong></u>
-            </p>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:block">
+            <div className="ml-10 flex items-baseline space-x-8">
+              <button 
+                onClick={() => scrollToSection('welcome')}
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  darkMode 
+                    ? 'text-teal-100 hover:text-amber-300 hover:bg-teal-800' 
+                    : 'text-white hover:text-amber-100 hover:bg-teal-700'
+                }`}
+              >
+                Home
+              </button>
+              <button 
+                onClick={() => scrollToSection('features')}
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  darkMode 
+                    ? 'text-teal-100 hover:text-amber-300 hover:bg-teal-800' 
+                    : 'text-white hover:text-amber-100 hover:bg-teal-700'
+                }`}
+              >
+                Features
+              </button>
+              <button 
+                onClick={() => scrollToSection('pricing')}
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  darkMode 
+                    ? 'text-teal-100 hover:text-amber-300 hover:bg-teal-800' 
+                    : 'text-white hover:text-amber-100 hover:bg-teal-700'
+                }`}
+              >
+                Pricing
+              </button>
+            </div>
+          </div>
+
+          {/* Theme Toggle & Mobile Menu Button */}
+          <div className="flex items-center space-x-4">
+            {/* Theme Toggle */}
+            <button
+              onClick={toggleDarkMode}
+              className={`p-2 rounded-lg transition-all duration-300 ${
+                darkMode 
+                  ? 'bg-teal-800 text-amber-300 hover:bg-teal-700 hover:scale-110' 
+                  : 'bg-teal-700 text-amber-100 hover:bg-teal-600 hover:scale-110'
+              }`}
+              aria-label="Toggle dark mode"
+            >
+              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+
+            {/* Mobile menu button */}
+            <div className="md:hidden">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className={`p-2 rounded-md transition-colors ${
+                  darkMode ? 'text-teal-100 hover:text-amber-300' : 'text-white hover:text-amber-100'
+                }`}
+              >
+                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
           </div>
         </div>
 
-
-        {/* Right - Buy Now Button */}
-        <div className="navbar-right">
-          <button
-            className="navbar-button"
-            onClick={() => {
-              const section = document.getElementById('pricing');
-              if (section) section.scrollIntoView({ behavior: 'smooth' });
-            }}
-          >
-            Buy Now for $8/mo
-          </button>
-        </div>
-
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <div className="md:hidden">
+            <div className={`px-2 pt-2 pb-3 space-y-1 border-t ${
+              darkMode ? 'border-teal-800' : 'border-teal-500'
+            }`}>
+              <button 
+                onClick={() => scrollToSection('welcome')}
+                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                  darkMode 
+                    ? 'text-teal-100 hover:text-amber-300 hover:bg-teal-800' 
+                    : 'text-white hover:text-amber-100 hover:bg-teal-700'
+                }`}
+              >
+                Home
+              </button>
+              <button 
+                onClick={() => scrollToSection('features')}
+                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                  darkMode 
+                    ? 'text-teal-100 hover:text-amber-300 hover:bg-teal-800' 
+                    : 'text-white hover:text-amber-100 hover:bg-teal-700'
+                }`}
+              >
+                Features
+              </button>
+              <button 
+                onClick={() => scrollToSection('pricing')}
+                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                  darkMode 
+                    ? 'text-teal-100 hover:text-amber-300 hover:bg-teal-800' 
+                    : 'text-white hover:text-amber-100 hover:bg-teal-700'
+                }`}
+              >
+                Pricing
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );
-};
+}
 
 export default Navbar;

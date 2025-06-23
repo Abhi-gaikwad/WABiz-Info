@@ -1,10 +1,10 @@
-/* Remove unnecessary constraints on root */
+/* Remove unnecessary constraints on root
 #root {
   width: 100vw;
   height: 100vh;
   margin: 0;
   padding: 0;
-  text-align: left; /* Optional: avoid center-alignment if not needed */
+  text-align: left; 
 }
 
 
@@ -42,4 +42,4 @@
 
 .read-the-docs {
   color: #888;
-}
+} */

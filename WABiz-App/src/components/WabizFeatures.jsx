@@ -1,8 +1,7 @@
 import React from 'react';
 import { MessageCircle, Zap, Users, Clock, BarChart3, Shield, Send, Bot } from 'lucide-react';
-import './WabizFeatures.css';
 
-const WabizFeatures = () => {
+const WabizFeatures = ({ darkMode }) => {
   const features = [
     {
       icon: MessageCircle,
@@ -43,53 +42,77 @@ const WabizFeatures = () => {
   ];
 
   return (
-    <section className="wabiz-features-section py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 min-h-screen">
+    <section className={`py-20 px-4 sm:px-6 lg:px-8 ${darkMode 
+      ? 'bg-gradient-to-br from-gray-900 via-gray-950 to-black' 
+      : 'bg-gradient-to-br from-gray-50 via-white to-gray-100'
+    } transition-colors duration-300`}>
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="main-title text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 bg-clip-text text-transparent mb-6">
+          <h1 className={`text-4xl sm:text-5xl font-extrabold leading-tight text-transparent bg-clip-text ${darkMode 
+            ? 'bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-500' 
+            : 'bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600'
+          } mb-6`}>
             Powerful Features for Modern Business
           </h1>
-          <p className="main-subtitle text-xl sm:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className={`text-lg sm:text-xl ${darkMode ? 'text-gray-400' : 'text-gray-600'} max-w-3xl mx-auto`}>
             Everything you need to manage your WhatsApp & SMS communication effectively
           </p>
         </div>
 
         {/* Features Grid */}
-        <div className="features-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => {
             const IconComponent = feature.icon;
             return (
               <div
                 key={index}
-                className="feature-card group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
+                className={`group relative ${darkMode 
+                  ? 'bg-gray-800 border-gray-700' 
+                  : 'bg-white border-gray-200'
+                } border rounded-2xl p-8 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-[1.03]`}
               >
-                {/* Gradient  Effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                
-                {/* Content */}
-                <div className="relative z-10">
-                  {/* Icon */}
-                  <div className={`feature-icon inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-r ${feature.gradient} mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                    <IconComponent className="h-8 w-8 text-white" />
-                  </div>
-                  
-                  {/* Title */}
-                  <h3 className="feature-title text-xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-300">
-                    {feature.title}
-                  </h3>
-                  
-                  {/* Description */}
-                  <p className="feature-description text-gray-600 leading-relaxed">
-                    {feature.description}
-                  </p>
+                {/* Icon */}
+                <div className={`inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-r ${feature.gradient} mb-6 shadow-md group-hover:scale-110 transform transition-transform`}>
+                  <IconComponent className="h-8 w-8 text-white" />
                 </div>
 
-                {/* Decorative Element */}
-                <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full opacity-20 group-hover:opacity-40 transition-opacity duration-300"></div>
+                {/* Title */}
+                <h3 className={`text-xl font-semibold ${darkMode 
+                  ? 'text-white group-hover:text-emerald-400' 
+                  : 'text-gray-800 group-hover:text-emerald-600'
+                } mb-3 transition-colors`}>
+                  {feature.title}
+                </h3>
+
+                {/* Description */}
+                <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'} text-sm leading-relaxed`}>
+                  {feature.description}
+                </p>
+
+                {/* Decorative Glow Circle */}
+                <div className={`absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br ${darkMode 
+                  ? 'from-emerald-400 to-pink-400' 
+                  : 'from-emerald-300 to-pink-300'
+                } rounded-full blur-3xl opacity-10 group-hover:opacity-30 transition-opacity`}></div>
               </div>
             );
           })}
+        </div>
+
+        {/* CTA Section */}
+        <div className={`mt-20 text-center ${darkMode ? 'text-white' : 'text-gray-800'}`}>
+          <div className="inline-flex items-center justify-center gap-3 mb-6">
+            <Zap className={`w-6 h-6 ${darkMode ? 'text-yellow-400' : 'text-yellow-500'} animate-pulse`} />
+            <span className="text-lg font-medium">Ready to transform your business communication?</span>
+            <Zap className={`w-6 h-6 ${darkMode ? 'text-yellow-400' : 'text-yellow-500'} animate-pulse`} style={{ animationDelay: '0.3s' }} />
+          </div>
+          <button className={`px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 ${darkMode 
+            ? 'bg-gradient-to-r from-emerald-500 to-blue-600 hover:from-emerald-600 hover:to-blue-700' 
+            : 'bg-gradient-to-r from-emerald-400 to-blue-500 hover:from-emerald-500 hover:to-blue-600'
+          } text-white shadow-lg hover:shadow-xl hover:scale-105 active:scale-95`}>
+            Get Started Today
+          </button>
         </div>
       </div>
     </section>
