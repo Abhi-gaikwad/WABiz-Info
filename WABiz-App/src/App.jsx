@@ -60,6 +60,8 @@ import WarningBanner from './components/WarningBanner';
 import Navbar from './components/Navbar';
 import DealCard from './components/DealCard';
 import WabizFeatures from './components/WabizFeatures';
+import WabizChatbot from './components/WabizChatbot';
+import ComparisonTable from './components/ComparisonTable';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -129,13 +131,18 @@ function App() {
       
       <DealCard darkMode={darkMode} />
 
+      <ComparisonTable darkMode={darkMode} />
+
       <div id="pricing">
         <Pricing darkMode={darkMode} />
       </div>
 
       <Footer darkMode={darkMode} />
+
+      <WabizChatbot/>
     </div>
-  );
+
+);
 }
 
 export default App;
