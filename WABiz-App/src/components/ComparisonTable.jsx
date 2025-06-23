@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react'; // Remove useState
 import { Check, X, TrendingUp, Shield, Zap } from 'lucide-react';
 
-function ComparisonTable() {
-  const [darkMode, setDarkMode] = useState(false);
+// Accept darkMode as a prop
+function ComparisonTable({ darkMode }) {
+  // Remove this line: const [darkMode, setDarkMode] = useState(false);
 
   const rows = [
     {
@@ -73,10 +74,10 @@ function ComparisonTable() {
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
         
-        {/* Dark Mode Toggle */}
-        <div className="flex justify-end mb-6">
+        {/* Dark Mode Toggle - Keep commented or remove if no longer needed */}
+        {/* <div className="flex justify-end mb-6">
           <button
-            onClick={() => setDarkMode(!darkMode)}
+            onClick={() => setDarkMode(!darkMode)} // This would now error without internal state
             className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
               darkMode 
                 ? 'bg-gray-800 text-white hover:bg-gray-700' 
@@ -85,7 +86,7 @@ function ComparisonTable() {
           >
             {darkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
           </button>
-        </div>
+        </div> */}
 
         {/* Header Section */}
         <div className="text-center mb-12 sm:mb-16">
