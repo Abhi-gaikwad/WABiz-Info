@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Bot, User, Minimize2, Maximize2 } from 'lucide-react';
-import './WabizChatbot.css'; // Import the new CSS file
 
 const WabizChatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,77 +24,6 @@ const WabizChatbot = () => {
     scrollToBottom();
   }, [messages]);
 
-  const quickReplies = [
-    "How does bulk messaging work?",
-    "Pricing plans",
-    "Getting started",
-    "Auto-reply features",
-    "CSV import guide",
-    "Technical support"
-  ];
-
-  const generateBotResponse = (userMessage) => {
-    const message = userMessage.toLowerCase();
-    
-    if (message.includes('pricing') || message.includes('plan') || message.includes('cost')) {
-      return "💰 **WABiz Pricing Plans:**\n\n🔹 **Starter Plan** - Perfect for small businesses\n• 1,000 messages/month\n• Basic automation\n• CSV import\n\n🔹 **Professional Plan** - For growing businesses\n• 10,000 messages/month\n• Advanced automation\n• Analytics dashboard\n• Priority support\n\n🔹 **Enterprise Plan** - For large organizations\n• Unlimited messages\n• Custom integrations\n• Dedicated support\n• White-label options\n\nWould you like to see detailed pricing or start a free trial?";
-    }
-    
-    if (message.includes('bulk') || message.includes('messaging') || message.includes('send')) {
-      return "📤 **WABiz Bulk Messaging Features:**\n\n✅ Send personalized messages to thousands of contacts\n✅ Import contacts via CSV files\n✅ Custom variables (name, email, scores)\n✅ Message scheduling\n✅ Delivery reports\n✅ Media attachments (images, documents)\n✅ Smart throttling to avoid blocks\n\nOur Chrome extension makes it super easy to get started. Want me to guide you through the setup process?";
-    }
-    
-    if (message.includes('auto') || message.includes('automation') || message.includes('reply')) {
-      return "🤖 **WABiz Automation Features:**\n\n🔄 **Smart Auto-Replies**\n• Instant customer engagement\n• Keyword-based responses\n• Time-based triggers\n\n⏰ **Scheduled Messages**\n• Campaign automation\n• Follow-up sequences\n• Reminder systems\n\n📊 **Analytics & Insights**\n• Message delivery rates\n• Response tracking\n• Customer engagement metrics\n\nWhich automation feature interests you most?";
-    }
-    
-    if (message.includes('csv') || message.includes('import') || message.includes('contact')) {
-      return "📋 **CSV Import Guide:**\n\n**Step 1:** Prepare your CSV file with these columns:\n• Name\n• Phone Number (with country code)\n• Email (optional)\n• Custom fields\n\n**Step 2:** Upload via WABiz dashboard\n\n**Step 3:** Map your columns\n\n**Step 4:** Preview and validate\n\n**Step 5:** Start your campaign!\n\n💡 **Pro Tips:**\n• Use international format (+1234567890)\n• Remove duplicates before import\n• Test with small batches first\n\nNeed a sample CSV template?";
-    }
-    
-    if (message.includes('start') || message.includes('begin') || message.includes('setup') || message.includes('getting started')) {
-      return "🚀 **Getting Started with WABiz:**\n\n**Step 1:** Install Chrome Extension\n• Visit Chrome Web Store\n• Search 'WABiz Bulk Sender'\n• Click 'Add to Chrome'\n\n**Step 2:** Create Account\n• Sign up at app.wabiz.co\n• Verify your email\n• Choose your plan\n\n**Step 3:** Connect WhatsApp Web\n• Open WhatsApp Web\n• Scan QR code with your phone\n• WABiz will detect the connection\n\n**Step 4:** Import Contacts\n• Upload your CSV file\n• Map the fields correctly\n\n**Step 5:** Send Your First Campaign!\n\nWant me to help you with any specific step?";
-    }
-    
-    if (message.includes('support') || message.includes('help') || message.includes('problem') || message.includes('issue')) {
-      return "🆘 **WABiz Support Options:**\n\n💬 **Live Chat Support**\n• Available 24/7 for Pro+ users\n• Business hours for Starter users\n\n📧 **Email Support**\n• support@wabiz.co\n• Response within 24 hours\n\n📚 **Help Resources**\n• Video tutorials\n• Step-by-step guides\n• FAQ section\n• Community forum\n\n🔧 **Common Issues:**\n• WhatsApp Web disconnection\n• Message delivery problems\n• CSV import errors\n• Chrome extension issues\n\nWhat specific issue are you facing?";
-    }
-    
-    if (message.includes('feature') || message.includes('what can') || message.includes('capabilities')) {
-      return "⭐ **WABiz Key Features:**\n\n📤 **Messaging**\n• Bulk message sending\n• Personalized messages\n• Media attachments\n• Message scheduling\n\n🤖 **Automation**\n• Auto-replies\n• Drip campaigns\n• Follow-up sequences\n• Keyword triggers\n\n📊 **Analytics**\n• Delivery reports\n• Open rates\n• Response tracking\n• Campaign performance\n\n👥 **Contact Management**\n• CSV import/export\n• Contact segmentation\n• Duplicate removal\n• Custom fields\n\n🛡️ **Safety Features**\n• Smart throttling\n• Anti-ban protection\n• Message validation\n• Compliance tools\n\nWhich feature would you like to learn more about?";
-    }
-    
-    if (message.includes('banned') || message.includes('block') || message.includes('safe')) {
-      return "🛡️ **WABiz Safety & Anti-Ban Features:**\n\n✅ **Smart Throttling**\n• Automatic message spacing\n• Random delays between messages\n• Daily sending limits\n\n✅ **Message Validation**\n• Phone number verification\n• Spam content detection\n• Compliance checking\n• Monitors account health\n• Warns about risky activities\n\n💡 **Safety Tips:**\n• Start with small batches\n• Use opt-in contact lists\n• Avoid spammy content\n• Monitor delivery rates\n\nWABiz has helped thousands of users send millions of messages safely!";
-    }
-    
-    if (message.includes('thank') || message.includes('thanks')) {
-      return "😊 You're welcome! I'm always here to help with your WABiz questions.\n\nIs there anything else you'd like to know about our WhatsApp automation platform?";
-    }
-
-    // Check if this looks like a specific question that needs detailed answer
-    const specificQuestionKeywords = [
-      'how to', 'what is', 'can i', 'does it', 'will it', 'is it possible', 
-      'tutorial', 'guide', 'steps', 'process', 'method', 'way to',
-      'integrate', 'api', 'webhook', 'database', 'crm', 'zapier',
-      'custom', 'advanced', 'enterprise', 'white label', 'branding',
-      'analytics', 'reports', 'dashboard', 'metrics', 'tracking',
-      'security', 'privacy', 'gdpr', 'compliance', 'terms',
-      'refund', 'cancel', 'upgrade', 'downgrade', 'billing'
-    ];
-
-    const hasSpecificQuestion = specificQuestionKeywords.some(keyword => 
-      message.includes(keyword)
-    );
-
-    if (hasSpecificQuestion) {
-      return "🔍 **I'd love to help with your specific question!**\n\nWhile I can assist with general WABiz topics, for detailed answers about your specific query, I recommend checking our comprehensive information website:\n\n🌐 **Visit:** wa-biz-info.vercel.app\n\nYou'll find:\n• Detailed tutorials and guides\n• Advanced feature explanations\n• Integration instructions\n• Technical documentation\n• FAQ section\n• Video walkthroughs\n\nIf you still need help after checking the info site, feel free to contact our support team at support@wabiz.co\n\nIs there anything else I can help you with from my available topics?";
-    }
-    
-    // Default response for general queries
-    return "🤔 I'd be happy to help! I can assist you with:\n\n• **Bulk Messaging** - How to send messages to multiple contacts\n• **Automation** - Set up auto-replies and campaigns\n• **Pricing** - Compare our plans and features\n• **Getting Started** - Step-by-step setup guide\n• **CSV Import** - How to upload your contacts\n• **Technical Support** - Troubleshooting and help\n\nFor more detailed information and comprehensive guides, please visit:\n🌐 **wa-biz-info.vercel.app**\n\nJust click on any topic above or ask me a specific question!";
-  };
-
   const handleSendMessage = () => {
     if (!inputMessage.trim()) return;
 
@@ -110,135 +38,104 @@ const WabizChatbot = () => {
     setInputMessage('');
     setIsTyping(true);
 
-    // Simulate bot typing delay
     setTimeout(() => {
       setIsTyping(false);
       const botResponse = {
         id: messages.length + 2,
-        text: generateBotResponse(inputMessage),
+        text: "This is a sample bot response.",
         sender: 'bot',
         timestamp: new Date()
       };
       setMessages(prev => [...prev, botResponse]);
-    }, 1000 + Math.random() * 1000);
+    }, 1000);
   };
 
-  const handleQuickReply = (reply) => {
-    setInputMessage(reply);
-    setTimeout(() => handleSendMessage(), 100);
-  };
-
-  const formatTime = (date) => {
-    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  };
+  const formatTime = (date) => date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
   const formatMessage = (text) => {
-    return text.split('\n').map((line, index) => (
-      <React.Fragment key={index}>
-        {line.startsWith('**') && line.endsWith('**') ? (
-          <strong className="message-text-strong">{line.slice(2, -2)}</strong>
-        ) : line.startsWith('• ') ? (
-          <div className="message-text-list-item">{line}</div>
-        ) : line.startsWith('🔹 ') || line.startsWith('✅ ') || line.startsWith('🔄 ') ? (
-          <div className="message-text-highlight">{line}</div>
-        ) : (
-          line
-        )}
-        {index < text.split('\n').length - 1 && <br />}
+    return text.split('\n').map((line, i) => (
+      <React.Fragment key={i}>
+        {line}
+        <br />
       </React.Fragment>
     ));
   };
 
   return (
-    <div className="chatbot-container">
-      {/* Chat Button */}
+    <div className="fixed bottom-6 left-6 z-[9999] font-sans">
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="chat-button"
+          className="w-[60px] h-[60px] bg-gradient-to-r from-green-500 to-green-600 text-white rounded-full shadow-lg flex items-center justify-center animate-pulse hover:scale-110 transition"
         >
           <MessageCircle size={28} />
         </button>
       )}
 
-      {/* Chat Window */}
       {isOpen && (
-        <div 
-          className={`chat-window ${isMinimized ? 'minimized' : 'full-size'}`}
-        >
+        <div className={`transition-all ${isMinimized ? 'w-80 h-16' : 'w-96 h-[500px]'} max-h-[85vh] fixed bottom-24 left-6 rounded-xl shadow-2xl flex flex-col overflow-hidden z-[9999] dark:bg-gray-900 bg-white border dark:border-gray-700 border-gray-200`}>
           {/* Header */}
-          <div className="chat-header">
-            <div className="chat-header-left">
+          <div className="bg-gradient-to-r from-green-500 to-green-600 text-white p-3 flex justify-between items-center">
+            <div className="flex items-center gap-2">
               <button
                 onClick={() => setIsMinimized(!isMinimized)}
-                className="header-button"
+                className="bg-white/20 hover:bg-white/30 p-1 rounded-full"
               >
                 {isMinimized ? <Maximize2 size={16} /> : <Minimize2 size={16} />}
               </button>
               <Bot size={20} />
               <div>
-                <h3 className="header-title">WABiz Assistant</h3>
-                <p className="header-status">Online • Ready to help</p>
+                <h3 className="font-semibold text-sm">WABiz Assistant</h3>
+                <p className="text-xs opacity-80">Online • Ready to help</p>
               </div>
             </div>
-            <div className="chat-header-right">
-              <button
-                onClick={() => setIsOpen(false)}
-                className="header-button"
-              >
-                <X size={16} />
-              </button>
-            </div>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="bg-white/20 hover:bg-white/30 p-1 rounded-full"
+            >
+              <X size={16} />
+            </button>
           </div>
 
           {!isMinimized && (
             <>
-              {/* Messages Area */}
-              <div className="messages-area">
-                {messages.map((message) => (
-                  <div
-                    key={message.id}
-                    className={`message-row ${message.sender === 'user' ? 'user' : 'bot'}`}
-                  >
-                    <div className="message-content-wrapper">
-                      {message.sender === 'bot' && (
-                        <div className="bot-icon-wrapper">
-                          <Bot size={16} className="bot-icon" />
+              {/* Messages */}
+              <div className="flex-1 overflow-y-auto px-4 py-3 flex flex-col gap-3 dark:bg-gray-900 bg-white text-gray-800 dark:text-gray-100">
+                {messages.map((msg) => (
+                  <div key={msg.id} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
+                    <div className="flex items-start gap-2 max-w-[85%]">
+                      {msg.sender === 'bot' && (
+                        <div className="bg-green-100 dark:bg-green-800 p-1 rounded-full">
+                          <Bot size={16} className="text-green-600 dark:text-green-300" />
                         </div>
                       )}
-                      <div
-                        className={`message-bubble ${message.sender === 'user' ? 'user' : 'bot'}`}
-                      >
-                        <div className="message-text">
-                          {formatMessage(message.text)}
-                        </div>
-                        <div className={`message-timestamp ${
-                          message.sender === 'user' ? 'user' : 'bot'
+                      <div className={`rounded-xl px-4 py-2 text-sm ${msg.sender === 'user'
+                        ? 'bg-blue-600 text-white rounded-br-sm ml-auto'
+                        : 'bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 rounded-bl-sm'
                         }`}>
-                          {formatTime(message.timestamp)}
+                        <div>{formatMessage(msg.text)}</div>
+                        <div className={`text-[10px] mt-1 text-right ${msg.sender === 'user' ? 'text-white/70' : 'text-gray-400'}`}>
+                          {formatTime(msg.timestamp)}
                         </div>
                       </div>
-                      {message.sender === 'user' && (
-                        <div className="user-icon-wrapper">
-                          <User size={16} className="user-icon" />
+                      {msg.sender === 'user' && (
+                        <div className="bg-blue-100 dark:bg-blue-800 p-1 rounded-full">
+                          <User size={16} className="text-blue-600 dark:text-blue-300" />
                         </div>
                       )}
                     </div>
                   </div>
                 ))}
-                
                 {isTyping && (
-                  <div className="typing-indicator">
-                    <div className="message-content-wrapper">
-                      <div className="bot-icon-wrapper">
-                        <Bot size={16} className="bot-icon" />
+                  <div className="flex justify-start">
+                    <div className="flex items-center gap-2">
+                      <div className="bg-green-100 dark:bg-green-800 p-1 rounded-full">
+                        <Bot size={16} className="text-green-600 dark:text-green-300" />
                       </div>
-                      <div className="message-bubble bot">
-                        <div className="flex-space">
-                          <div className="dot"></div>
-                          <div className="dot" style={{animationDelay: '0.1s'}}></div>
-                          <div className="dot" style={{animationDelay: '0.2s'}}></div>
-                        </div>
+                      <div className="bg-gray-200 dark:bg-gray-700 rounded-xl px-4 py-2 flex gap-1">
+                        <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></div>
+                        <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce [animation-delay:0.1s]"></div>
+                        <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce [animation-delay:0.2s]"></div>
                       </div>
                     </div>
                   </div>
@@ -246,36 +143,21 @@ const WabizChatbot = () => {
                 <div ref={messagesEndRef} />
               </div>
 
-              {/* Quick Replies */}
-              <div className="quick-replies-area">
-                <div className="quick-replies-wrapper">
-                  {quickReplies.slice(0, 3).map((reply, index) => (
-                    <button
-                      key={index}
-                      onClick={() => handleQuickReply(reply)}
-                      className="quick-reply-button"
-                    >
-                      {reply}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Input Area */}
-              <div className="input-area">
-                <div className="input-flex-wrapper">
+              {/* Input */}
+              <div className="border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-4 py-3">
+                <div className="flex gap-2">
                   <input
                     type="text"
                     value={inputMessage}
                     onChange={(e) => setInputMessage(e.target.value)}
-                    onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+                    onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
                     placeholder="Type your message..."
-                    className="message-input"
+                    className="flex-1 rounded-full px-4 py-2 text-sm border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-800 dark:text-white"
                   />
                   <button
                     onClick={handleSendMessage}
                     disabled={!inputMessage.trim()}
-                    className="send-button"
+                    className="bg-green-500 hover:bg-green-600 text-white rounded-full p-3 transition disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <Send size={16} />
                   </button>

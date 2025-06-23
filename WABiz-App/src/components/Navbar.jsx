@@ -1,139 +1,78 @@
 import React, { useState } from 'react';
 import { Sun, Moon, Menu, X } from 'lucide-react';
+import logoWabiz from '../assets/logoWabiz.png';
 
 function Navbar({ darkMode, toggleDarkMode }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  const scrollToSection = (sectionId) => {
-    const section = document.getElementById(sectionId);
+  const scrollToPricing = () => {
+    const section = document.getElementById('pricing');
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
     }
+    setMenuOpen(false);
   };
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      darkMode 
-        ? 'bg-teal-900/95 backdrop-blur-md border-teal-800' 
-        : 'bg-teal-600/95 backdrop-blur-md border-teal-500'
-    } border-b`}>
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300
+      bg-white/70 dark:bg-gray-900/80
+      backdrop-blur-lg border-b border-teal-400 dark:border-gray-700 shadow-md`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <h1 className={`text-2xl font-bold ${
-              darkMode ? 'text-amber-300' : 'text-white'
-            }`}>
-              WABiz
-            </h1>
-          </div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              <button 
-                onClick={() => scrollToSection('welcome')}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  darkMode 
-                    ? 'text-teal-100 hover:text-amber-300 hover:bg-teal-800' 
-                    : 'text-white hover:text-amber-100 hover:bg-teal-700'
-                }`}
-              >
-                Home
-              </button>
-              <button 
-                onClick={() => scrollToSection('features')}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  darkMode 
-                    ? 'text-teal-100 hover:text-amber-300 hover:bg-teal-800' 
-                    : 'text-white hover:text-amber-100 hover:bg-teal-700'
-                }`}
-              >
-                Features
-              </button>
-              <button 
-                onClick={() => scrollToSection('pricing')}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  darkMode 
-                    ? 'text-teal-100 hover:text-amber-300 hover:bg-teal-800' 
-                    : 'text-white hover:text-amber-100 hover:bg-teal-700'
-                }`}
-              >
-                Pricing
-              </button>
+        <div className="flex justify-between items-center h-20">
+          {/* Logo and Brand */}
+          <div className="flex items-center space-x-4">
+            <img src={logoWabiz} alt="WABiz Logo" className="h-10 w-10" />
+            <div>
+              <h1 className="text-xl sm:text-2xl font-extrabold text-teal-900 dark:text-amber-400">WABiz</h1>
+              <p className="hidden sm:block text-xs text-gray-600 dark:text-gray-300">📞 Never Miss a Lead Again!</p>
             </div>
           </div>
 
-          {/* Theme Toggle & Mobile Menu Button */}
-          <div className="flex items-center space-x-4">
-            {/* Theme Toggle */}
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-4">
             <button
-              onClick={toggleDarkMode}
-              className={`p-2 rounded-lg transition-all duration-300 ${
-                darkMode 
-                  ? 'bg-teal-800 text-amber-300 hover:bg-teal-700 hover:scale-110' 
-                  : 'bg-teal-700 text-amber-100 hover:bg-teal-600 hover:scale-110'
-              }`}
-              aria-label="Toggle dark mode"
+              onClick={scrollToPricing}
+              className="px-4 py-2 rounded-full font-semibold shadow-sm
+                bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-600 hover:to-yellow-500
+                text-white transition duration-300"
             >
-              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+              🚀 Grab This Opportunity
             </button>
 
-            {/* Mobile menu button */}
-            <div className="md:hidden">
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className={`p-2 rounded-md transition-colors ${
-                  darkMode ? 'text-teal-100 hover:text-amber-300' : 'text-white hover:text-amber-100'
-                }`}
-              >
-                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            </div>
+            <button
+              onClick={toggleDarkMode}
+              className="p-2 rounded-full text-teal-800 hover:text-teal-600
+                dark:text-amber-300 dark:hover:text-amber-400 transition"
+            >
+              {darkMode ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
+            </button>
+          </div>
+
+          {/* Mobile menu toggle */}
+          <div className="md:hidden flex items-center space-x-2">
+            <button onClick={toggleDarkMode} className="p-2 rounded-full text-teal-800 hover:text-teal-600 dark:text-amber-300 dark:hover:text-amber-400">
+              {darkMode ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
+            </button>
+            <button onClick={() => setMenuOpen(!menuOpen)} className="p-2">
+              {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
           </div>
         </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden">
-            <div className={`px-2 pt-2 pb-3 space-y-1 border-t ${
-              darkMode ? 'border-teal-800' : 'border-teal-500'
-            }`}>
-              <button 
-                onClick={() => scrollToSection('welcome')}
-                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors ${
-                  darkMode 
-                    ? 'text-teal-100 hover:text-amber-300 hover:bg-teal-800' 
-                    : 'text-white hover:text-amber-100 hover:bg-teal-700'
-                }`}
-              >
-                Home
-              </button>
-              <button 
-                onClick={() => scrollToSection('features')}
-                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors ${
-                  darkMode 
-                    ? 'text-teal-100 hover:text-amber-300 hover:bg-teal-800' 
-                    : 'text-white hover:text-amber-100 hover:bg-teal-700'
-                }`}
-              >
-                Features
-              </button>
-              <button 
-                onClick={() => scrollToSection('pricing')}
-                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors ${
-                  darkMode 
-                    ? 'text-teal-100 hover:text-amber-300 hover:bg-teal-800' 
-                    : 'text-white hover:text-amber-100 hover:bg-teal-700'
-                }`}
-              >
-                Pricing
-              </button>
-            </div>
-          </div>
-        )}
       </div>
+
+      {/* Mobile Dropdown */}
+      {menuOpen && (
+        <div className="md:hidden px-4 py-4 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+          <button
+            onClick={scrollToPricing}
+            className="w-full mb-2 px-4 py-2 rounded-md font-medium
+              bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-600 hover:to-yellow-500
+              text-white transition"
+          >
+            🚀 Grab This Opportunity
+          </button>
+        </div>
+      )}
     </nav>
   );
 }

@@ -7,6 +7,7 @@ import WarningBanner from './components/WarningBanner';
 import Navbar from './components/Navbar';
 import DealCard from './components/DealCard';
 import WabizFeatures from './components/WabizFeatures';
+import WabizChatbot from './components/WabizChatbot';
 import ComparisonTable from './components/ComparisonTable'; // Assuming this component exists based on common app structures
 
 function App() {
@@ -67,7 +68,7 @@ function App() {
         <Welcome darkMode={darkMode} /> {/* Pass darkMode prop here */}
       </div>
 
-      <WarningBanner darkMode={darkMode} />
+      {/* <WarningBanner darkMode={darkMode} /> */}
       
       <div id="features">
         <WabizFeatures darkMode={darkMode} />
@@ -84,6 +85,8 @@ function App() {
       </div>
 
       <Footer darkMode={darkMode} />
+
+      <WabizChatbot darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
     </div>
   );
 }
