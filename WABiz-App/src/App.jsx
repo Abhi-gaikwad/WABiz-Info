@@ -7,6 +7,7 @@ import WarningBanner from './components/WarningBanner';
 import Navbar from './components/Navbar';
 import DealCard from './components/DealCard';
 import WabizFeatures from './components/WabizFeatures';
+import ComparisonTable from './components/ComparisonTable';
 
 function App() {
   useEffect(() => {
@@ -39,6 +40,7 @@ function App() {
       <WarningBanner />
       <WabizFeatures />
       <DealCard />
+      <ComparisonTable />
 
       <div id='pricing'>
         <Pricing />
