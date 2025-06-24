@@ -121,8 +121,8 @@ const InstantReachSection = ({ darkMode }) => (
 
 // CTA Section
 const CTASection = ({ darkMode }) => (
-  <div className={`text-white p-8 rounded-xl shadow-lg ${
-    darkMode ? 'from-orange-700 to-red-700' : 'from-orange-600 to-red-600'
+  <div className={`text-white p-8 rounded-xl shadow-lg bg-gradient-to-r ${
+    darkMode ? 'from-blue-700 to-green-700' : 'from-teal-600 to-green-600'
   }`}>
     <div className="text-center">
       <div className="flex items-center justify-center gap-2 mb-4">
@@ -134,16 +134,17 @@ const CTASection = ({ darkMode }) => (
         Transform your business with the most powerful WhatsApp automation platform.
         Join <span className="font-semibold text-yellow-200">thousands of successful marketers</span> already using WABiz.
       </p>
-      <button className="w-full bg-white hover:bg-gray-50 text-orange-600 font-bold py-4 px-6 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl">
+      <button className="group w-full bg-white hover:bg-gray-50 text-orange-600 font-bold py-4 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02] hover:-translate-y-1">
         <span className="flex items-center justify-center gap-2">
-          <Rocket className="w-5 h-5" />
-          <span>DISCOVER WABIZ NOW</span>
-          <Rocket className="w-5 h-5" />
+          <Rocket className="w-5 h-5 group-hover:animate-pulse" />
+          <span className="group-hover:tracking-wider transition-all duration-300">DISCOVER WABIZ NOW</span>
+          <Rocket className="w-5 h-5 group-hover:animate-pulse" />
         </span>
       </button>
     </div>
   </div>
 );
+
 
 // Features Section
 const FeaturesSection = ({ darkMode }) => {

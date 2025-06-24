@@ -1,155 +1,137 @@
-import React, { useState, useEffect } from 'react';
-import { Clock, Star, Zap, CheckCircle, AlertTriangle, ShoppingCart, Sun, Moon } from 'lucide-react';
+import React from 'react';
+import { Star, CheckCircle, ShoppingCart, Shield, Award, Zap } from 'lucide-react';
 
-// REMOVED: The entire 'Navbar' component definition that was previously here.
-// Its presence caused conflicts with the main theme management in App.jsx.
-
-// Improved DealCard Component
-const DealCard = ({ darkMode }) => { // <--- MODIFIED: Accepts darkMode as a prop
-  const [timeLeft, setTimeLeft] = useState({
-    days: 2,
-    hours: 14,
-    minutes: 35,
-    seconds: 42
-  });
-
-  // Countdown timer effect
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(prev => {
-        let { days, hours, minutes, seconds } = prev;
-
-        if (seconds > 0) {
-          seconds--;
-        } else if (minutes > 0) {
-          minutes--;
-          seconds = 59;
-        } else if (hours > 0) {
-          hours--;
-          minutes = 59;
-          seconds = 59;
-        } else if (days > 0) {
-          days--;
-          hours = 23;
-          minutes = 59;
-          seconds = 59;
-        }
-
-        return { days, hours, minutes, seconds };
-      });
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
-
-  const formatTime = (time) => time.toString().padStart(2, '0');
-
+const DealCard = ({ darkMode }) => {
   return (
-    <section className={`relative py-12 sm:py-16 lg:py-20 ${darkMode ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' : 'bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50'} transition-all duration-500`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`rounded-3xl p-6 sm:p-8 lg:p-12 shadow-xl border ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} transition-all duration-500`}>
-          <div className="text-center mb-8">
-            <h2 className={`text-3xl sm:text-4xl font-extrabold ${darkMode ? 'text-amber-300' : 'text-red-700'} mb-4`}>
-              Limited-Time Deal!
+    <section className={`py-16 lg:py-24 ${darkMode ? 'bg-gradient-to-b from-slate-900 to-slate-800' : 'bg-gradient-to-b from-slate-50 to-white'} transition-all duration-500`}>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className={`rounded-2xl overflow-hidden shadow-2xl border ${darkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} transition-all duration-500`}>
+          
+          {/* Header Section */}
+          <div className={`px-8 py-12 text-center ${darkMode ? 'bg-gradient-to-r from-blue-900/50 to-indigo-900/50' : 'bg-gradient-to-r from-blue-50 to-indigo-50'} border-b ${darkMode ? 'border-slate-700' : 'border-slate-200'}`}>
+            <div className="flex justify-center mb-4">
+              <div className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold ${darkMode ? 'bg-amber-900/50 text-amber-300 border border-amber-700' : 'bg-amber-100 text-amber-800 border border-amber-200'}`}>
+                <Star className="w-4 h-4 mr-2" />
+                Premium Offer
+              </div>
+            </div>
+            <h2 className={`text-4xl lg:text-5xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+              WhatsApp Marketing
+              <span className={`block text-3xl lg:text-4xl mt-2 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>
+                Professional Plan
+              </span>
             </h2>
-            <p className={`text-lg sm:text-xl ${darkMode ? 'text-gray-300' : 'text-gray-700'} max-w-2xl mx-auto`}>
-              Don't miss out on our special offer to supercharge your WhatsApp marketing.
+            <p className={`text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>
+              Elevate your business communication with our comprehensive WhatsApp marketing solution. 
+              Designed for professionals who demand excellence and results.
             </p>
           </div>
 
-          {/* Countdown Timer */}
-          <div className={`flex justify-center items-center gap-4 sm:gap-6 lg:gap-8 mb-10 p-4 rounded-xl shadow-inner ${darkMode ? 'bg-gray-900 text-amber-200' : 'bg-yellow-50 text-red-800'} transition-all duration-500`}>
-            {Object.entries(timeLeft).map(([unit, value]) => (
-              <div key={unit} className="text-center">
-                <div className="text-4xl sm:text-5xl lg:text-6xl font-bold font-mono">
-                  {formatTime(value)}
-                </div>
-                <div className={`text-xs sm:text-sm uppercase font-semibold ${darkMode ? 'text-gray-400' : 'text-yellow-700'}`}>
-                  {unit}
+          {/* Pricing Section */}
+          <div className="px-8 py-12">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+              
+              {/* Standard Plan */}
+              <div className={`rounded-xl p-6 border-2 ${darkMode ? 'bg-slate-700/50 border-slate-600' : 'bg-slate-50 border-slate-200'} transition-all duration-300`}>
+                <div className="text-center">
+                  <h3 className={`text-xl font-semibold mb-2 ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>Standard</h3>
+                  <div className={`text-3xl font-bold mb-4 ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>
+                    <span className="line-through">$99</span>
+                    <span className="text-sm font-normal">/month</span>
+                  </div>
+                  <p className={`text-sm ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>Previous pricing</p>
                 </div>
               </div>
-            ))}
-          </div>
 
-          {/* Deal Details */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-            {/* Old Price */}
-            <div className={`text-center p-6 rounded-2xl border ${darkMode ? 'bg-gray-700/50 border-gray-600' : 'bg-yellow-100 border-yellow-200'} shadow-md transition-all duration-500`}>
-              <p className={`text-lg font-semibold ${darkMode ? 'text-gray-300' : 'text-gray-600'} mb-2`}>Original Price</p>
-              <p className={`text-4xl sm:text-5xl font-bold line-through ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-                $99/month
-              </p>
-            </div>
-            {/* New Price */}
-            <div className={`relative text-center p-6 rounded-2xl border-4 ${darkMode ? 'bg-emerald-800/70 border-emerald-600' : 'bg-emerald-100 border-emerald-400'} shadow-lg transition-all duration-500 overflow-hidden`}>
-              <div className="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
-                SAVE 50%
-              </div>
-              <p className={`text-lg font-semibold ${darkMode ? 'text-emerald-200' : 'text-emerald-700'} mb-2`}>Special Price</p>
-              <p className={`text-4xl sm:text-5xl font-bold ${darkMode ? 'text-white' : 'text-emerald-800'}`}>
-                $49<span className="text-2xl font-normal">/month</span>
-              </p>
-              <div className={`mt-4 ${darkMode ? 'text-emerald-200' : 'text-emerald-700'}`}>
-                <Zap className="inline-block w-5 h-5 mr-2" /> For a limited time!
-              </div>
-            </div>
-          </div>
-
-          {/* Key Features of the Deal */}
-          <div className={`mb-10 p-6 rounded-2xl border ${darkMode ? 'bg-gray-700/50 border-gray-600' : 'bg-blue-50 border-blue-200'} shadow-md transition-all duration-500`}>
-            <h3 className={`text-2xl font-bold ${darkMode ? 'text-teal-300' : 'text-blue-700'} mb-4 text-center`}>What You Get:</h3>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3">
-              {[
-                "Unlimited Messages (Fair Use Policy)",
-                "Advanced Automation Workflows",
-                "Dedicated Account Manager",
-                "24/7 Priority Support",
-                "Custom Integration Assistance",
-                "Access to Beta Features"
-              ].map((feature, index) => (
-                <li key={index} className={`flex items-center ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
-                  <CheckCircle className={`w-5 h-5 mr-3 ${darkMode ? 'text-green-400' : 'text-green-600'} flex-shrink-0`} />
-                  {feature}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Call to Action */}
-          <div className="text-center">
-            <div className="flex justify-center mb-6">
-              <button
-                className={`flex items-center justify-center px-8 py-4 rounded-full text-xl font-bold shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl ${darkMode ? 'bg-gradient-to-r from-emerald-600 to-teal-700 text-white hover:from-emerald-700 hover:to-teal-800' : 'bg-gradient-to-r from-emerald-500 to-teal-600 text-white hover:from-emerald-600 hover:to-teal-700'} focus:outline-none focus:ring-4 focus:ring-emerald-500/50 dark:focus:ring-teal-700/50`}
-              >
-                <ShoppingCart className="w-6 h-6 mr-3" />
-                Grab the Deal Now!
-              </button>
-            </div>
-
-            {/* Learn More Button */}
-            <div className="flex justify-center">
-              <button
-                className={`flex items-center justify-center px-6 py-3 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-95 ${darkMode ? 'bg-gray-700 text-gray-200 hover:bg-gray-600' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600`}
-              >
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <span className="text-2xl">💬</span>
-                  <span>Learn More</span>
+              {/* Professional Plan - Highlighted */}
+              <div className={`rounded-xl p-8 border-4 relative transform scale-105 ${darkMode ? 'bg-gradient-to-br from-blue-900/30 to-indigo-900/30 border-blue-500' : 'bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-500'} shadow-xl transition-all duration-300`}>
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                  <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-2 rounded-full text-sm font-bold">
+                    BEST VALUE
+                  </div>
                 </div>
-              </button>
+                <div className="text-center">
+                  <h3 className={`text-2xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-slate-900'}`}>Professional</h3>
+                  <div className={`text-5xl font-bold mb-2 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+                    ₹ 1,999
+                    <span className="text-2xl font-normal">/Yearly</span>
+                  </div>
+                  <div className={`flex items-center justify-center mb-4 ${darkMode ? 'text-green-400' : 'text-green-600'}`}>
+                    <span className="text-lg font-semibold">Save 51%</span>
+                  </div>
+                  <p className={`text-sm ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>Billed monthly</p>
+                </div>
+              </div>
+
+              {/* Enterprise Plan */}
+              <div className={`rounded-xl p-6 border-2 ${darkMode ? 'bg-slate-700/50 border-slate-600' : 'bg-slate-50 border-slate-200'} transition-all duration-300`}>
+                <div className="text-center">
+                  <h3 className={`text-xl font-semibold mb-2 ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>Enterprise</h3>
+                  <div className={`text-3xl font-bold mb-4 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>
+                    Custom
+                  </div>
+                  <p className={`text-sm ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>Contact us for pricing</p>
+                </div>
+              </div>
             </div>
 
-            {/* Enhanced Trust Badges */}
-            <div className="pt-6 sm:pt-8 border-t-2 border-gray-200 dark:border-gray-700">
-              <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-sm sm:text-base text-gray-600 dark:text-gray-400">
+            {/* Features Section */}
+            <div className={`rounded-xl p-8 mb-12 ${darkMode ? 'bg-slate-700/30 border border-slate-600' : 'bg-slate-50 border border-slate-200'}`}>
+              <h3 className={`text-2xl font-bold text-center mb-8 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+                Professional Plan Features
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[
-                  { icon: '🛡️', text: '30-Day Money Back' },
+                  { icon: CheckCircle, title: "Unlimited Messages", desc: "Send unlimited messages with fair usage policy" },
+                  { icon: Zap, title: "Advanced Automation", desc: "Sophisticated workflow automation tools" },
+                  { icon: Shield, title: "Priority Support", desc: "24/7 dedicated customer support" },
+                  { icon: Award, title: "Account Manager", desc: "Dedicated account manager assigned" },
+                  { icon: Star, title: "Custom Integrations", desc: "Tailored integration assistance" },
+                  { icon: CheckCircle, title: "Beta Access", desc: "Early access to new features" }
+                ].map((feature, index) => (
+                  <div key={index} className="flex items-start space-x-3">
+                    <div className={`flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center ${darkMode ? 'bg-blue-900/50 text-blue-400' : 'bg-blue-100 text-blue-600'}`}>
+                      <feature.icon className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h4 className={`font-semibold mb-1 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+                        {feature.title}
+                      </h4>
+                      <p className={`text-sm ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>
+                        {feature.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Call to Action */}
+            <div className="text-center">
+              <button className={`inline-flex items-center px-12 py-4 rounded-xl text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl ${darkMode ? 'bg-gradient-to-r from-blue-600 to-indigo-700 text-white hover:from-blue-700 hover:to-indigo-800' : 'bg-gradient-to-r from-blue-600 to-indigo-700 text-white hover:from-blue-700 hover:to-indigo-800'} focus:outline-none focus:ring-4 focus:ring-blue-500/50`}>
+                <ShoppingCart className="w-5 h-5 mr-3" />
+                Get Started Today
+              </button>
+              
+              <div className="mt-6">
+                <button className={`text-sm font-medium transition-colors duration-300 ${darkMode ? 'text-slate-300 hover:text-white' : 'text-slate-600 hover:text-slate-900'} underline`}>
+                  View detailed comparison →
+                </button>
+              </div>
+            </div>
+
+            {/* Trust Indicators */}
+            <div className={`mt-12 pt-8 border-t ${darkMode ? 'border-slate-700' : 'border-slate-200'}`}>
+              <div className="flex flex-wrap justify-center items-center gap-8 text-sm">
+                {[
+                  { icon: '🛡️', text: '30-Day Money Back Guarantee' },
+                  { icon: '🔒', text: 'Secure & Encrypted' },
                   { icon: '🔄', text: 'Cancel Anytime' },
-                  { icon: '🔒', text: 'Secure Payment' },
-                  { icon: '⚡', text: 'Instant Activation' }
+                  { icon: '⚡', text: 'Instant Setup' }
                 ].map((badge, index) => (
-                  <div key={index} className={`flex items-center gap-2 px-3 py-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-600/50 transition-colors duration-300 ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'}`}>
-                    <span className="text-lg">{badge.icon}</span>
-                    <span className="font-semibold">{badge.text}</span>
+                  <div key={index} className={`flex items-center space-x-2 ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>
+                    <span className="text-base">{badge.icon}</span>
+                    <span className="font-medium">{badge.text}</span>
                   </div>
                 ))}
               </div>
