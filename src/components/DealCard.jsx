@@ -6,7 +6,7 @@ const DealCard = ({ darkMode }) => {
     <section className={`py-16 lg:py-24 ${darkMode ? 'bg-gradient-to-b from-slate-900 to-slate-800' : 'bg-gradient-to-b from-slate-50 to-white'} transition-all duration-500`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`rounded-2xl overflow-hidden shadow-2xl border ${darkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} transition-all duration-500`}>
-          
+
           {/* Header Section */}
           <div className={`px-8 py-12 text-center ${darkMode ? 'bg-gradient-to-r from-blue-900/50 to-indigo-900/50' : 'bg-gradient-to-r from-blue-50 to-indigo-50'} border-b ${darkMode ? 'border-slate-700' : 'border-slate-200'}`}>
             <div className="flex justify-center mb-4">
@@ -22,7 +22,7 @@ const DealCard = ({ darkMode }) => {
               </span>
             </h2>
             <p className={`text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>
-              Elevate your business communication with our comprehensive WhatsApp marketing solution. 
+              Elevate your business communication with our comprehensive WhatsApp marketing solution.
               Designed for professionals who demand excellence and results.
             </p>
           </div>
@@ -30,7 +30,7 @@ const DealCard = ({ darkMode }) => {
           {/* Pricing Section */}
           <div className="px-8 py-12">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-              
+
               {/* Standard Plan */}
               <div className={`rounded-xl p-6 border-2 ${darkMode ? 'bg-slate-700/50 border-slate-600' : 'bg-slate-50 border-slate-200'} transition-all duration-300`}>
                 <div className="text-center">
@@ -108,11 +108,15 @@ const DealCard = ({ darkMode }) => {
 
             {/* Call to Action */}
             <div className="text-center">
-              <button className={`inline-flex items-center px-12 py-4 rounded-xl text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl ${darkMode ? 'bg-gradient-to-r from-blue-600 to-indigo-700 text-white hover:from-blue-700 hover:to-indigo-800' : 'bg-gradient-to-r from-blue-600 to-indigo-700 text-white hover:from-blue-700 hover:to-indigo-800'} focus:outline-none focus:ring-4 focus:ring-blue-500/50`}>
+              {/* This button now uses an <a> tag pointing to the #pricing ID */}
+              <a
+                href="#pricing"
+                className={`inline-flex items-center px-12 py-4 rounded-xl text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl ${darkMode ? 'bg-gradient-to-r from-blue-600 to-indigo-700 text-white hover:from-blue-700 hover:to-indigo-800' : 'bg-gradient-to-r from-blue-600 to-indigo-700 text-white hover:from-blue-700 hover:to-indigo-800'} focus:outline-none focus:ring-4 focus:ring-blue-500/50`}
+              >
                 <ShoppingCart className="w-5 h-5 mr-3" />
                 Get Started Today
-              </button>
-              
+              </a>
+
               <div className="mt-6">
                 <button className={`text-sm font-medium transition-colors duration-300 ${darkMode ? 'text-slate-300 hover:text-white' : 'text-slate-600 hover:text-slate-900'} underline`}>
                   View detailed comparison →
