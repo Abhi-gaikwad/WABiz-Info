@@ -1,5 +1,6 @@
 {
   "name": "wabiz-app",
+  "homename": "https://Abhi-gaikwad.github.io/Wabiz.app/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,8 +8,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
-
+    "preview": "vite preview",
+    "Predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "gh-pages": "^6.3.0",
