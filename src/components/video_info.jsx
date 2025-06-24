@@ -66,22 +66,19 @@ function VideoInfo({ darkMode }) {
                   </div>
                 </div>
               ) : (
-                /* Actual Video */
-                <video 
-                  className="w-full h-full object-cover aspect-video"
-                  controls
-                  autoPlay
-                  onError={(e) => {
-                    console.error('Video failed to load:', e);
-                    setIsVideoPlaying(false);
-                  }}
-                >
-                  <source src="/src/assets/demo-Video.mp4" type="video/mp4" />
-                  <source src="./assets/demo-Video.mp4" type="video/mp4" />
-                  <p className={`p-4 text-center ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                    Your browser does not support the video tag. Please try a different browser.
-                  </p>
-                </video>
+                /* YouTube Video Embed */
+                <div className="aspect-video">
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src="https://www.youtube.com/embed/8QcwXmKuBC4?autoplay=1"
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full"
+                  ></iframe>
+                </div>
               )}
             </div>
           </div>
@@ -164,7 +161,6 @@ function VideoInfo({ darkMode }) {
               <div className={`p-3 sm:p-4 rounded-xl ${
                 darkMode ? 'bg-gray-800' : 'bg-gray-50'
               }`}>
-                {/* Removed extra space by changing gap-3 sm:gap-4 to gap-2 and justify-between to justify-center with space-x-6 */}
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-center sm:space-x-6 gap-2">
                   <div className="flex items-center gap-2">
                     <Phone className={`h-4 w-4 ${
