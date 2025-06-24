@@ -120,30 +120,43 @@ const InstantReachSection = ({ darkMode }) => (
 );
 
 // CTA Section
-const CTASection = ({ darkMode }) => (
-  <div className={`text-white p-8 rounded-xl shadow-lg bg-gradient-to-r ${
-    darkMode ? 'from-blue-700 to-green-700' : 'from-teal-600 to-green-600'
-  }`}>
-    <div className="text-center">
-      <div className="flex items-center justify-center gap-2 mb-4">
-        <TrendingUp className="w-6 h-6" />
-        <h3 className="text-xl font-bold">Start Your WhatsApp Marketing Journey</h3>
-        <TrendingUp className="w-6 h-6" />
+const CTASection = ({ darkMode }) => {
+  // Define scrollToPricing directly within CTASection
+  const scrollToPricing = () => {
+    const section = document.getElementById('pricing');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <div className={`text-white p-8 rounded-xl shadow-lg bg-gradient-to-r ${
+      darkMode ? 'from-blue-700 to-green-700' : 'from-teal-600 to-green-600'
+    }`}>
+      <div className="text-center">
+        <div className="flex items-center justify-center gap-2 mb-4">
+          <TrendingUp className="w-6 h-6" />
+          <h3 className="text-xl font-bold">Start Your WhatsApp Marketing Journey</h3>
+          <TrendingUp className="w-6 h-6" />
+        </div>
+        <p className="text-orange-100 mb-6 leading-relaxed">
+          Transform your business with the most powerful WhatsApp automation platform.
+          Join <span className="font-semibold text-yellow-200">thousands of successful marketers</span> already using WABiz.
+        </p>
+        <button
+          onClick={scrollToPricing} // Using the locally defined function
+          className="group w-full bg-white hover:bg-gray-50 text-orange-600 font-bold py-4 px-6 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-[1.02] hover:-translate-y-1"
+        >
+          <span className="flex items-center justify-center gap-2">
+            <Rocket className="w-5 h-5 group-hover:animate-pulse" />
+            <span className="group-hover:tracking-wider transition-all duration-300">DISCOVER WABIZ NOW</span>
+            <Rocket className="w-5 h-5 group-hover:animate-pulse" />
+          </span>
+        </button>
       </div>
-      <p className="text-orange-100 mb-6 leading-relaxed">
-        Transform your business with the most powerful WhatsApp automation platform.
-        Join <span className="font-semibold text-yellow-200">thousands of successful marketers</span> already using WABiz.
-      </p>
-      <button className="group w-full bg-white hover:bg-gray-50 text-orange-600 font-bold py-4 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02] hover:-translate-y-1">
-        <span className="flex items-center justify-center gap-2">
-          <Rocket className="w-5 h-5 group-hover:animate-pulse" />
-          <span className="group-hover:tracking-wider transition-all duration-300">DISCOVER WABIZ NOW</span>
-          <Rocket className="w-5 h-5 group-hover:animate-pulse" />
-        </span>
-      </button>
     </div>
-  </div>
-);
+  );
+};
 
 
 // Features Section
@@ -250,6 +263,14 @@ const FeaturesSection = ({ darkMode }) => {
 
 // Main Layout Component
 const WABizLanding = ({ darkMode }) => {
+  // Function to scroll to the pricing section
+  const scrollToPricing = () => {
+    const pricingSection = document.getElementById('pricing');
+    if (pricingSection) {
+      pricingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <div className={`min-h-screen transition-colors duration-300 ${
       darkMode ? 'bg-gray-900' : 'bg-gray-50'
@@ -288,6 +309,7 @@ const WABizLanding = ({ darkMode }) => {
 
             <StatsSection darkMode={darkMode} />
             <InstantReachSection darkMode={darkMode} />
+            {/* CTASection now defines its own scrollToPricing internally */}
             <CTASection darkMode={darkMode} />
           </div>
 
