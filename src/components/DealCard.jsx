@@ -8,7 +8,7 @@ const DealCard = ({ darkMode }) => {
         <div className={`rounded-2xl overflow-hidden shadow-2xl border ${darkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} transition-all duration-500`}>
 
           {/* Header Section */}
-          <div className={`px-8 py-12 text-center ${darkMode ? 'bg-gradient-to-r from-blue-900/50 to-indigo-900/50' : 'bg-gradient-to-r from-blue-50 to-indigo-50'} border-b ${darkMode ? 'border-slate-700' : 'border-slate-200'}`}>
+          <div className={`px-8 py-12 text-center ${darkMode ? 'bg-gradient-to-r from-green-900/50 to-indigo-900/50' : 'bg-gradient-to-r from-green-50 to-indigo-50'} border-b ${darkMode ? 'border-slate-700' : 'border-slate-200'}`}>
             <div className="flex justify-center mb-4">
               <div className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold ${darkMode ? 'bg-amber-900/50 text-amber-300 border border-amber-700' : 'bg-amber-100 text-amber-800 border border-amber-200'}`}>
                 <Star className="w-4 h-4 mr-2" />
@@ -44,7 +44,7 @@ const DealCard = ({ darkMode }) => {
               </div>
 
               {/* Professional Plan - Highlighted */}
-              <div className={`rounded-xl p-8 border-4 relative transform scale-105 ${darkMode ? 'bg-gradient-to-br from-blue-900/30 to-indigo-900/30 border-blue-500' : 'bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-500'} shadow-xl transition-all duration-300`}>
+              <div className={`rounded-xl p-8 border-4 relative transform scale-105 ${darkMode ? 'bg-gradient-to-br from-green -900/30 to-indigo-900/30 border-green-500' : 'bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-500'} shadow-xl transition-all duration-300`}>
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                   <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-2 rounded-full text-sm font-bold">
                     BEST VALUE
@@ -111,16 +111,16 @@ const DealCard = ({ darkMode }) => {
               {/* This button now uses an <a> tag pointing to the #pricing ID */}
               <a
                 href="#pricing"
-                className={`inline-flex items-center px-12 py-4 rounded-xl text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl ${darkMode ? 'bg-gradient-to-r from-blue-600 to-indigo-700 text-white hover:from-blue-700 hover:to-indigo-800' : 'bg-gradient-to-r from-blue-600 to-indigo-700 text-white hover:from-blue-700 hover:to-indigo-800'} focus:outline-none focus:ring-4 focus:ring-blue-500/50`}
+                className={`inline-flex items-center px-12 py-4 rounded-xl text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl ${darkMode ? 'bg-gradient-to-r from-green-600 to-indigo-700 text-white hover:from-blue-700 hover:to-indigo-800' : 'bg-gradient-to-r from-blue-600 to-indigo-700 text-white hover:from-blue-700 hover:to-indigo-800'} focus:outline-none focus:ring-4 focus:ring-blue-500/50`}
               >
                 <ShoppingCart className="w-5 h-5 mr-3" />
                 Get Started Today
               </a>
 
               <div className="mt-6">
-                <button className={`text-sm font-medium transition-colors duration-300 ${darkMode ? 'text-slate-300 hover:text-white' : 'text-slate-600 hover:text-slate-900'} underline`}>
+                {/* <button className={`text-sm font-medium transition-colors duration-300 ${darkMode ? 'text-slate-300 hover:text-white' : 'text-slate-600 hover:text-slate-900'} underline`}>
                   View detailed comparison →
-                </button>
+                </button> */}
               </div>
             </div>
 

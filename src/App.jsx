@@ -8,7 +8,9 @@ import Navbar from './components/Navbar';
 import DealCard from './components/DealCard';
 import WabizFeatures from './components/WabizFeatures';
 import WabizChatbot from './components/WabizChatbot';
-import ComparisonTable from './components/ComparisonTable'; // Assuming this component exists based on common app structures
+import ComparisonTable from './components/ComparisonTable';
+// Fixed import - use proper component name
+import InfoAndDemo from "./components/video_info.jsx";
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -65,7 +67,12 @@ function App() {
       <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       
       <div id="welcome">
-        <Welcome darkMode={darkMode} /> {/* Pass darkMode prop here */}
+        <Welcome darkMode={darkMode} />
+      </div>
+      
+      {/* Fixed: Use proper component name with capital letter */}
+      <div id="video-info">
+        <InfoAndDemo darkMode={darkMode} />
       </div>
 
       {/* <WarningBanner darkMode={darkMode} /> */}
@@ -74,11 +81,9 @@ function App() {
         <WabizFeatures darkMode={darkMode} />
       </div>
       
-      {/* Updated: Ensure DealCard receives darkMode prop */}
       <DealCard darkMode={darkMode} />
 
-      {/* Assuming ComparisonTable needs darkMode too */}
-      <ComparisonTable darkMode={darkMode} /> {/* Pass darkMode prop here */}
+      <ComparisonTable darkMode={darkMode} />
 
       <div id="pricing">
         <Pricing darkMode={darkMode} />

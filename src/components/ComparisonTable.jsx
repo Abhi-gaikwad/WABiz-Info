@@ -59,6 +59,16 @@ function ComparisonTable({ darkMode = false }) {
     return colors[color] || colors.emerald;
   };
 
+  const scrollToPricing = () => {
+    const pricingElement = document.getElementById('pricing');
+    if (pricingElement) {
+      pricingElement.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     <div className={`min-h-screen transition-all duration-500 ${
       darkMode 
@@ -76,20 +86,7 @@ function ComparisonTable({ darkMode = false }) {
         
         {/* Header */}
         <div className="text-center mb-16">
-          {/* Dark Mode Toggle */}
-          {/* <div className="flex justify-end mb-8">
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                darkMode 
-                  ? 'bg-gray-800 text-white hover:bg-gray-700 shadow-lg' 
-                  : 'bg-white text-gray-700 hover:bg-gray-50 shadow-lg'
-              }`}
-            >
-              {darkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
-            </button>
-          </div> */}
-
+         
           <div className="space-y-6">
             <h1 className={`text-4xl md:text-6xl font-bold ${
               darkMode ? 'text-white' : 'text-gray-900'
@@ -216,7 +213,10 @@ function ComparisonTable({ darkMode = false }) {
 
         {/* CTA Section */}
         <div className="text-center">
-          <button className="px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300">
+          <button 
+            onClick={scrollToPricing}
+            className="px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300"
+          >
             Get Started with WhatsApp Marketing
           </button>
         </div>
