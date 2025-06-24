@@ -41,16 +41,24 @@ const WabizFeatures = ({ darkMode }) => {
     }
   ];
 
+  // Function to scroll to the pricing section
+  const scrollToPricing = () => {
+    const pricingSection = document.getElementById('pricing');
+    if (pricingSection) {
+      pricingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
-    <section className={`py-20 px-4 sm:px-6 lg:px-8 ${darkMode 
-      ? 'bg-gradient-to-br from-gray-900 via-gray-950 to-black' 
+    <section className={`py-20 px-4 sm:px-6 lg:px-8 ${darkMode
+      ? 'bg-gradient-to-br from-gray-900 via-gray-950 to-black'
       : 'bg-gradient-to-br from-gray-50 via-white to-gray-100'
     } transition-colors duration-300`}>
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className={`text-4xl sm:text-5xl font-extrabold leading-tight text-transparent bg-clip-text ${darkMode 
-            ? 'bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-500' 
+          <h1 className={`text-4xl sm:text-5xl font-extrabold leading-tight text-transparent bg-clip-text ${darkMode
+            ? 'bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-500'
             : 'bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600'
           } mb-6`}>
             Powerful Features for Modern Business
@@ -67,8 +75,8 @@ const WabizFeatures = ({ darkMode }) => {
             return (
               <div
                 key={index}
-                className={`group relative ${darkMode 
-                  ? 'bg-gray-800 border-gray-700' 
+                className={`group relative ${darkMode
+                  ? 'bg-gray-800 border-gray-700'
                   : 'bg-white border-gray-200'
                 } border rounded-2xl p-8 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-[1.03]`}
               >
@@ -78,8 +86,8 @@ const WabizFeatures = ({ darkMode }) => {
                 </div>
 
                 {/* Title */}
-                <h3 className={`text-xl font-semibold ${darkMode 
-                  ? 'text-white group-hover:text-emerald-400' 
+                <h3 className={`text-xl font-semibold ${darkMode
+                  ? 'text-white group-hover:text-emerald-400'
                   : 'text-gray-800 group-hover:text-emerald-600'
                 } mb-3 transition-colors`}>
                   {feature.title}
@@ -91,8 +99,8 @@ const WabizFeatures = ({ darkMode }) => {
                 </p>
 
                 {/* Decorative Glow Circle */}
-                <div className={`absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br ${darkMode 
-                  ? 'from-emerald-400 to-pink-400' 
+                <div className={`absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br ${darkMode
+                  ? 'from-emerald-400 to-pink-400'
                   : 'from-emerald-300 to-pink-300'
                 } rounded-full blur-3xl opacity-10 group-hover:opacity-30 transition-opacity`}></div>
               </div>
@@ -107,10 +115,13 @@ const WabizFeatures = ({ darkMode }) => {
             <span className="text-lg font-medium">Ready to transform your business communication?</span>
             <Zap className={`w-6 h-6 ${darkMode ? 'text-yellow-400' : 'text-yellow-500'} animate-pulse`} style={{ animationDelay: '0.3s' }} />
           </div>
-          <button className={`px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 ${darkMode 
-            ? 'bg-gradient-to-r from-emerald-500 to-blue-600 hover:from-emerald-600 hover:to-blue-700' 
-            : 'bg-gradient-to-r from-emerald-400 to-blue-500 hover:from-emerald-500 hover:to-blue-600'
-          } text-white shadow-lg hover:shadow-xl hover:scale-105 active:scale-95`}>
+          <button
+            onClick={scrollToPricing} // Added onClick event
+            className={`px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 ${darkMode
+              ? 'bg-gradient-to-r from-emerald-500 to-blue-600 hover:from-emerald-600 hover:to-blue-700'
+              : 'bg-gradient-to-r from-emerald-400 to-blue-500 hover:from-emerald-500 hover:to-blue-600'
+            } text-white shadow-lg hover:shadow-xl hover:scale-105 active:scale-95`}
+          >
             Get Started Today
           </button>
         </div>
