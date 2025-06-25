@@ -54,12 +54,12 @@ const DealCard = ({ darkMode }) => {
                   <h3 className={`text-2xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-slate-900'}`}>Professional</h3>
                   <div className={`text-5xl font-bold mb-2 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
                     ₹ 1,999
-                    <span className="text-2xl font-normal">/Yearly</span>
+                    <span className="text-2xl font-normal">/Lifetime</span>
                   </div>
                   <div className={`flex items-center justify-center mb-4 ${darkMode ? 'text-green-400' : 'text-green-600'}`}>
                     <span className="text-lg font-semibold">Save 51%</span>
                   </div>
-                  <p className={`text-sm ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>Billed monthly</p>
+                  <p className={`text-sm ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>Billed Once</p>
                 </div>
               </div>
 
@@ -128,9 +128,9 @@ const DealCard = ({ darkMode }) => {
             <div className={`mt-12 pt-8 border-t ${darkMode ? 'border-slate-700' : 'border-slate-200'}`}>
               <div className="flex flex-wrap justify-center items-center gap-8 text-sm">
                 {[
-                  { icon: '🛡️', text: '30-Day Money Back Guarantee' },
+                  { icon: '🛡️', text: 'Grow Up Guarantee' },
                   { icon: '🔒', text: 'Secure & Encrypted' },
-                  { icon: '🔄', text: 'Cancel Anytime' },
+                  // { icon: '🔄', text: 'Cancel Anytime' },
                   { icon: '⚡', text: 'Instant Setup' }
                 ].map((badge, index) => (
                   <div key={index} className={`flex items-center space-x-2 ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>

@@ -6,6 +6,16 @@ const Footer = ({ darkMode }) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleWhatsAppDemo = () => {
+    const phoneNumber = '9226333789';
+    const message = 'Hello WABiz Team! 👋 I would like to request a demo of your WhatsApp Business platform. Please share the details. Thank you!';
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    
+    // Open WhatsApp in a new tab
+    window.open(whatsappUrl, '_blank');
+  };
+
   const features = [
     { icon: MessageCircle, text: "95% Message Open Rate" },
     { icon: Zap, text: "10x Faster Than Email" },
@@ -53,10 +63,13 @@ const Footer = ({ darkMode }) => {
             })}
           </div>
 
-          <button className={`px-8 py-3 rounded-xl font-bold text-lg transition-all duration-300 ${darkMode 
-            ? 'bg-gradient-to-r from-emerald-500 to-blue-600 hover:from-emerald-600 hover:to-blue-700' 
-            : 'bg-gradient-to-r from-emerald-400 to-blue-500 hover:from-emerald-500 hover:to-blue-600'
-          } text-white shadow-md hover:shadow-lg hover:scale-105 active:scale-95`}>
+          <button 
+            onClick={handleWhatsAppDemo}
+            className={`px-8 py-3 rounded-xl font-bold text-lg transition-all duration-300 ${darkMode 
+              ? 'bg-gradient-to-r from-emerald-500 to-blue-600 hover:from-emerald-600 hover:to-blue-700' 
+              : 'bg-gradient-to-r from-emerald-400 to-blue-500 hover:from-emerald-500 hover:to-blue-600'
+            } text-white shadow-md hover:shadow-lg hover:scale-105 active:scale-95`}
+          >
             Try Free for 7 Days
           </button>
         </div>
@@ -74,25 +87,25 @@ const Footer = ({ darkMode }) => {
 
         {/* Back to top button */}
         <button
-  onClick={scrollToTop}
-  className={`fixed bottom-6 right-6 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-50 group ${
-    darkMode 
-      ? 'bg-gray-700 hover:bg-emerald-600 border border-gray-600' 
-      : 'bg-white hover:bg-emerald-500 border border-gray-200'
-  }`}
-  aria-label="Back to top"
->
-  <div className="relative">
-    <ArrowUp className={`w-5 h-5 transition-colors duration-300 ${
-      darkMode 
-        ? 'text-gray-300 group-hover:text-white' 
-        : 'text-gray-700 group-hover:text-white'
-    }`} />
-    <div className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
-      darkMode ? 'bg-emerald-600' : 'bg-emerald-500'
-    }`}></div>
-  </div>
-</button>
+          onClick={scrollToTop}
+          className={`fixed bottom-6 right-6 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-50 group ${
+            darkMode 
+              ? 'bg-gray-700 hover:bg-emerald-600 border border-gray-600' 
+              : 'bg-white hover:bg-emerald-500 border border-gray-200'
+          }`}
+          aria-label="Back to top"
+        >
+          <div className="relative">
+            <ArrowUp className={`w-5 h-5 transition-colors duration-300 ${
+              darkMode 
+                ? 'text-gray-300 group-hover:text-white' 
+                : 'text-gray-700 group-hover:text-white'
+            }`} />
+            <div className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
+              darkMode ? 'bg-emerald-600' : 'bg-emerald-500'
+            }`}></div>
+          </div>
+        </button>
       </div>
     </footer>
   );

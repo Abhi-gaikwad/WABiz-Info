@@ -122,7 +122,7 @@ function VideoInfo({ darkMode }) {
                     darkMode ? 'bg-amber-500 text-black' : 'bg-teal-500 text-white'
                   }`}>
                     <Gift className="h-3 w-3 sm:h-4 sm:w-4" />
-                    Limited Time Offer
+                    Lifetime Offer
                   </div>
                   <div className="mb-3 sm:mb-4">
                     <span className={`text-3xl sm:text-4xl font-bold ${
